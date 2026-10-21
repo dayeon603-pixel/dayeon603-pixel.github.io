@@ -55,16 +55,16 @@ body{
 .spine{position:absolute;left:0;top:0;bottom:0;width:clamp(44px,5.4vmin,70px);
   display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;
   padding-block:3%;pointer-events:none;z-index:5}
-.spine i{position:relative;display:block;width:68%;height:clamp(6px,.95vmin,10px);
-  border-radius:999px;background:var(--coral2)}
-.spine i::after{content:"";position:absolute;right:-18%;top:50%;transform:translateY(-50%);
-  width:clamp(11px,1.5vmin,16px);height:clamp(11px,1.5vmin,16px);border-radius:50%;
-  background:var(--cover);box-shadow:0 0 0 1.5px rgba(91,63,168,.22)}
+.spine i{position:relative;display:block;width:62%;height:clamp(5px,.8vmin,9px);
+  border-radius:999px;background:var(--coral2);margin-left:-6%}
+.spine i::after{content:"";position:absolute;right:-26%;top:50%;transform:translateY(-50%);
+  width:clamp(13px,1.85vmin,20px);height:clamp(13px,1.85vmin,20px);border-radius:50%;
+  background:#C9B8F2;box-shadow:0 0 0 2px rgba(255,255,255,.55)}
 
 .tabs{position:absolute;right:0;top:6%;bottom:6%;width:clamp(30px,4.2vmin,54px);
   display:flex;flex-direction:column;gap:clamp(3px,.5vmin,7px);z-index:6}
 .tab{flex:1;border:0;cursor:pointer;padding:0;background:var(--peach);
-  border-radius:0 clamp(8px,1.3vmin,15px) clamp(8px,1.3vmin,15px) 0;
+  border-radius:0 clamp(12px,2vmin,22px) clamp(12px,2vmin,22px) 0;
   transition:background .15s,transform .15s;position:relative;overflow:hidden}
 .tab span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   writing-mode:vertical-rl;font-family:var(--fd);font-weight:700;
@@ -92,10 +92,14 @@ body{
 .spread{height:100%;display:flex;gap:clamp(22px,3.4vmin,46px);position:relative}
 .spread .page{flex:1;min-width:0}
 .spread .left{flex:0 0 36%;display:flex;flex-direction:column;justify-content:center}
-.spread::before{content:"";position:absolute;left:36%;top:4%;bottom:4%;
-  width:clamp(22px,3.4vmin,46px);
-  background:repeating-linear-gradient(180deg,transparent 0 14px,var(--coral2) 14px 18px,transparent 18px 32px);
-  opacity:.9;z-index:3;pointer-events:none}
+.gutter{position:absolute;left:36%;top:3%;bottom:3%;width:clamp(22px,3.4vmin,46px);
+  z-index:3;pointer-events:none;display:flex;flex-direction:column;
+  justify-content:space-evenly;align-items:center}
+.gutter i{position:relative;display:block;width:88%;height:clamp(14px,2.1vmin,26px);
+  border-radius:999px;background:#C9B8F2}
+.gutter i::after{content:"";position:absolute;left:14%;right:14%;top:50%;
+  transform:translateY(-50%);height:clamp(5px,.78vmin,8px);border-radius:999px;
+  background:var(--coral2)}
 .scroll{overflow-y:auto;overscroll-behavior:contain}
 .scroll::-webkit-scrollbar{width:7px}
 .scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:9px}
@@ -182,11 +186,15 @@ body{
 .pill.draft{background:var(--peach);color:#8A4320}
 
 /* ---------- home key ---------- */
-.homebtn{position:absolute;left:clamp(52px,6.4vmin,82px);top:clamp(12px,2vmin,20px);
-  z-index:8;background:var(--cover);border:0;border-radius:999px;cursor:pointer;
-  font-family:var(--fd);font-weight:700;color:var(--violet);
-  font-size:clamp(.68rem,1.4vmin,.82rem);padding:6px 13px}
-.homebtn:hover{background:#fff}
+.navbar{position:absolute;left:clamp(52px,6.4vmin,82px);top:clamp(12px,2vmin,20px);
+  z-index:9;display:flex;gap:8px}
+.navbar button{background:#fff;border:clamp(2px,.3vmin,3px) solid #C9B8F2;
+  border-radius:999px;cursor:pointer;font-family:var(--fd);font-weight:700;
+  color:var(--violet);font-size:clamp(.7rem,1.45vmin,.88rem);
+  padding:clamp(5px,.9vmin,9px) clamp(11px,1.8vmin,18px);
+  box-shadow:0 3px 0 #B4A0E6;transition:transform .12s,box-shadow .12s}
+.navbar button:hover{transform:translateY(-2px);box-shadow:0 5px 0 #B4A0E6}
+.navbar button:active{transform:translateY(2px);box-shadow:0 1px 0 #B4A0E6}
 
 @media (max-width:760px){
   .spread{flex-direction:column;gap:10px}
@@ -203,7 +211,7 @@ body{
 
 <div class="book">
   <div class="spine" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <button class="homebtn" id="home" type="button">&#8962; Menu</button>
+  <div class="navbar"><button id="back" type="button">&larr; Back</button><button id="home" type="button">Menu</button></div>
   <div class="tabs" role="tablist"><button class="tab" data-go="s/about" data-sec="about" style="--c:#E2693F"><span>About Me</span></button><button class="tab" data-go="s/research" data-sec="research" style="--c:#7C4DFF"><span>Research</span></button><button class="tab" data-go="s/hardware" data-sec="hardware" style="--c:#FF7A5C"><span>Hardware</span></button><button class="tab" data-go="s/ventures" data-sec="ventures" style="--c:#00B39F"><span>Ventures</span></button><button class="tab" data-go="s/civic" data-sec="civic" style="--c:#F5A524"><span>Civic</span></button><button class="tab" data-go="s/papers" data-sec="papers" style="--c:#FF5FA2"><span>Papers</span></button><button class="tab" data-go="s/awards" data-sec="awards" style="--c:#3B82F6"><span>Awards</span></button><button class="tab" data-go="s/contact" data-sec="contact" style="--c:#9C6BE8"><span>Contact</span></button></div>
   <div class="stage" id="stage">
     <div class="screen cover" id="sc-cover" data-screen="cover">
@@ -236,7 +244,7 @@ body{
   </div>
 </div>
 <div class="screen" id="sc-s/about" data-screen="s/about">
-  <div class="spread">
+  <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div class="page left">
       <h2 class="bub lg">About<br>Me</h2>
       <div class="shot sm"><img src="img/me.jpg" alt="Dayeon Kang"></div>
@@ -256,7 +264,7 @@ body{
   </div>
 </div>
 <div class="screen" id="sc-s/papers" data-screen="s/papers">
-  <div class="spread">
+  <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div class="page left">
       <h2 class="bub lg">Papers</h2>
       <svg class="dd" viewBox="0 0 60 60" width="60" height="60" style="margin-top:10px" aria-hidden="true"><path d="M30 4l6 17 18 1-14 11 5 18-15-10-15 10 5-18L6 22l18-1z" fill="#FF5FA2"/></svg>
@@ -282,7 +290,7 @@ body{
   </div>
 </div>
 <div class="screen" id="sc-s/awards" data-screen="s/awards">
-  <div class="spread">
+  <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div class="page left">
       <h2 class="bub lg">Awards</h2>
       <svg class="dd" viewBox="0 0 60 60" width="60" height="60" style="margin-top:10px" aria-hidden="true"><path d="M30 10c6-7 18-3 17 6 7-2 12 7 6 12 6 5 1 14-6 12 1 9-11 13-17 6-6 7-18 3-17-6-7 2-12-7-6-12-6-5-1-14 6-12-1-9 11-13 17-6z" fill="#3B82F6"/></svg>
@@ -335,7 +343,7 @@ body{
       </div>
     </div>
 <div class="screen" id="sc-p/metamirage" data-screen="p/metamirage">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/research">&larr; Research</p>
               <h2 class="bub lg">MetaMirage</h2>
@@ -348,7 +356,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/temperature" data-screen="p/temperature">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/research">&larr; Research</p>
               <h2 class="bub lg">One Temperature?</h2>
@@ -361,7 +369,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/aegis" data-screen="p/aegis">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/research">&larr; Research</p>
               <h2 class="bub lg">Aegis Wafer</h2>
@@ -374,7 +382,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/ascent" data-screen="p/ascent">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/research">&larr; Research</p>
               <h2 class="bub lg">Ascent</h2>
@@ -387,7 +395,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/landauer" data-screen="p/landauer">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/research">&larr; Research</p>
               <h2 class="bub lg">Landauer</h2>
@@ -400,7 +408,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/sps" data-screen="p/sps">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/research">&larr; Research</p>
               <h2 class="bub lg">Perturbation Stability</h2>
@@ -413,7 +421,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/korean-pim" data-screen="p/korean-pim">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/research">&larr; Research</p>
               <h2 class="bub lg">Medication Safety</h2>
@@ -426,7 +434,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/arc" data-screen="p/arc">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/research">&larr; Research</p>
               <h2 class="bub lg">Why Agents Fail</h2>
@@ -461,7 +469,7 @@ body{
       </div>
     </div>
 <div class="screen" id="sc-p/harvestguard" data-screen="p/harvestguard">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/hardware">&larr; Hardware</p>
               <h2 class="bub lg">HarvestGuard</h2>
@@ -474,7 +482,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/neurovoice" data-screen="p/neurovoice">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/hardware">&larr; Hardware</p>
               <h2 class="bub lg">NeuroVoice</h2>
@@ -487,7 +495,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/neuroswarm" data-screen="p/neuroswarm">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/hardware">&larr; Hardware</p>
               <h2 class="bub lg">NeuroSwarm</h2>
@@ -500,7 +508,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/felt" data-screen="p/felt">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/hardware">&larr; Hardware</p>
               <h2 class="bub lg">FELT</h2>
@@ -513,7 +521,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/atsi" data-screen="p/atsi">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/hardware">&larr; Hardware</p>
               <h2 class="bub lg">AirTouch</h2>
@@ -551,7 +559,7 @@ body{
       </div>
     </div>
 <div class="screen" id="sc-p/arbiter" data-screen="p/arbiter">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/ventures">&larr; Ventures</p>
               <h2 class="bub lg">Arbiter</h2>
@@ -564,7 +572,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/signet" data-screen="p/signet">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/ventures">&larr; Ventures</p>
               <h2 class="bub lg">Signet</h2>
@@ -577,7 +585,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/caravan" data-screen="p/caravan">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/ventures">&larr; Ventures</p>
               <h2 class="bub lg">Caravan</h2>
@@ -590,7 +598,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/tollgate" data-screen="p/tollgate">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/ventures">&larr; Ventures</p>
               <h2 class="bub lg">Tollgate</h2>
@@ -603,7 +611,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/halo" data-screen="p/halo">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/ventures">&larr; Ventures</p>
               <h2 class="bub lg">HALO &amp; Goldentime</h2>
@@ -616,7 +624,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/olyak" data-screen="p/olyak">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/ventures">&larr; Ventures</p>
               <h2 class="bub lg">Olyak</h2>
@@ -648,7 +656,7 @@ body{
       </div>
     </div>
 <div class="screen" id="sc-p/ordinance" data-screen="p/ordinance">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/civic">&larr; Civic</p>
               <h2 class="bub lg">Two Ordinances</h2>
@@ -661,7 +669,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/ganeumja" data-screen="p/ganeumja">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/civic">&larr; Civic</p>
               <h2 class="bub lg">Ganeumja</h2>
@@ -674,7 +682,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/farmpilot" data-screen="p/farmpilot">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/civic">&larr; Civic</p>
               <h2 class="bub lg">FarmPilot &amp; ReField</h2>
@@ -687,7 +695,7 @@ body{
           </div>
         </div>
 <div class="screen" id="sc-p/synaptic" data-screen="p/synaptic">
-          <div class="spread">
+          <div class="spread"><div class="gutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="page left">
               <p class="crumb" data-go="s/civic">&larr; Civic</p>
               <h2 class="bub lg">SYNAPTIC</h2>
@@ -728,7 +736,10 @@ body{
     });
     var sc = byId[key].querySelector('.scroll');
     if (sc) sc.scrollTop = 0;
-    document.getElementById('home').hidden = (key === 'cover' || key === 'menu');
+    var nb = document.querySelector('.navbar');
+    if (nb) nb.hidden = (key === 'cover');
+    var bk = document.getElementById('back');
+    if (bk) bk.hidden = (key === 'menu');
   }
   function go(key){
     if (location.hash.slice(1) === key) show(key);
@@ -739,6 +750,9 @@ body{
     if (t) { ev.preventDefault(); go(t.dataset.go); }
   });
   document.getElementById('home').addEventListener('click', function(){ go('menu'); });
+  document.getElementById('back').addEventListener('click', function(){
+    if (history.length > 1) history.back(); else go('menu');
+  });
   document.addEventListener('keydown', function(ev){
     if (ev.key === 'Escape') go('menu');
   });
