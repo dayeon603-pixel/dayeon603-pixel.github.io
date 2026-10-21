@@ -1,0 +1,2558 @@
+<title>Dayeon Kang</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --bg1:#9C7CF2; --bg2:#7254DF;
+  --card:#FFFFFF; --panel:#F7F3FF; --sunk:#EFE9FD;
+  --ink:#1D0E3C; --ink2:#53437A; --ink3:#8275A8;
+  --line:#E4DBFA; --line2:#F1ECFD;
+  --coral:#FF7A5C; --violet:#7C4DFF;
+  --ok:#0E8A72; --ok-w:#DDF4EE;
+  --warn:#B4531F; --warn-w:#FCE8DE;
+  --wait:#8A6410; --wait-w:#FBF0D8;
+  --fd:"Fredoka","Trebuchet MS",sans-serif;
+  --fb:"Nunito","Helvetica Neue",Arial,sans-serif;
+  --fm:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg1:#2A1F4D; --bg2:#1A1333;
+  --card:#241C3D; --panel:#1E1734; --sunk:#191330;
+  --ink:#F3EEFF; --ink2:#BFB3E0; --ink3:#9286B8;
+  --line:#372C5C; --line2:#2A2148;
+  --coral:#FF9478; --violet:#A98AFF;
+  --ok:#49C6A8; --ok-w:#13342C;
+  --warn:#F0916B; --warn-w:#38211A;
+  --wait:#D8B65C; --wait-w:#322814;
+}}
+:root[data-theme="dark"]{
+  --bg1:#2A1F4D; --bg2:#1A1333;
+  --card:#241C3D; --panel:#1E1734; --sunk:#191330;
+  --ink:#F3EEFF; --ink2:#BFB3E0; --ink3:#9286B8;
+  --line:#372C5C; --line2:#2A2148;
+  --coral:#FF9478; --violet:#A98AFF;
+  --ok:#49C6A8; --ok-w:#13342C;
+  --warn:#F0916B; --warn-w:#38211A;
+  --wait:#D8B65C; --wait-w:#322814;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;font-family:var(--fb);font-size:16px;line-height:1.62;color:var(--ink);
+  background-color:var(--bg1);
+  background-image:var(--noise),linear-gradient(168deg,var(--bg1) 0%,var(--bg2) 100%);
+  background-blend-mode:overlay,normal;background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+
+/* ---------- sticky bar ---------- */
+.bar{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
+  background:rgba(124,93,230,.82);backdrop-filter:blur(14px);
+  border-bottom:1.5px solid rgba(255,255,255,.26);
+}
+.bar-in{max-width:1120px;margin:0 auto;padding:11px 20px;display:flex;align-items:center;gap:18px}
+.bar .me{font-family:var(--fd);font-weight:600;font-size:16px;color:#fff;letter-spacing:.01em;
+  background:none;border:0;padding:0;cursor:pointer;white-space:nowrap}
+.bar nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.bar nav::-webkit-scrollbar{display:none}
+.bar nav a{
+  font-family:var(--fb);font-weight:600;font-size:13px;color:rgba(255,255,255,.88);
+  text-decoration:none;padding:6px 11px;border-radius:999px;white-space:nowrap;
+}
+.bar nav a:hover{background:rgba(255,255,255,.2);color:#fff}
+.bar .cta{
+  font-family:var(--fd);font-weight:600;font-size:13px;color:#2A1250;background:#FFD9CE;
+  border:0;border-radius:999px;padding:8px 15px;text-decoration:none;white-space:nowrap;
+}
+.bar .cta:hover{background:#fff}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(32px,6vw,62px) 10px}
+.kick{
+  display:inline-block;font-family:var(--fm);font-size:11px;letter-spacing:.15em;
+  text-transform:uppercase;color:#fff;background:rgba(255,255,255,.2);
+  border:1.5px solid rgba(255,255,255,.38);padding:6px 14px;border-radius:999px;margin:0 0 20px;
+}
+h1.big{
+  font-family:var(--fd);font-weight:700;font-size:clamp(2.4rem,8vw,5.2rem);line-height:.95;
+  margin:0;letter-spacing:.005em;text-transform:uppercase;
+  color:#FFD9CE;-webkit-text-stroke:4px #35186B;paint-order:stroke fill;
+  text-shadow:0 6px 0 rgba(36,16,78,.32);
+}
+.hero .pos{color:#fff;max-width:56ch;margin:22px 0 0;font-size:clamp(1.02rem,2.1vw,1.2rem);line-height:1.56}
+.ident{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.ident a,.ident span{
+  font-family:var(--fm);font-size:11.5px;color:#fff;text-decoration:none;
+  background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.34);
+  padding:7px 14px;border-radius:999px;
+}
+.ident a:hover{background:rgba(255,255,255,.32)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:10px;margin-top:26px}
+.stats div{background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:16px;padding:13px 15px}
+.stats b{display:block;font-family:var(--fd);font-size:1.5rem;font-weight:700;color:#fff;line-height:1.05}
+.stats span{display:block;font-family:var(--fm);font-size:9.5px;letter-spacing:.07em;
+  text-transform:uppercase;color:rgba(255,255,255,.86);margin-top:6px;line-height:1.4}
+
+/* ---------- sections ---------- */
+section.blk{
+  background:var(--card);border-radius:24px;margin:20px 0;
+  padding:clamp(22px,3.4vw,42px);
+  box-shadow:0 14px 0 -6px rgba(29,14,60,.16),0 26px 46px -26px rgba(16,6,40,.55);
+  scroll-margin-top:72px;
+}
+.blk > h2{
+  font-family:var(--fd);font-weight:600;font-size:clamp(1.45rem,3.3vw,2.05rem);
+  margin:0 0 6px;color:var(--ink);letter-spacing:-.005em;
+}
+.blk .lede{color:var(--ink2);max-width:70ch;margin:0 0 4px;font-size:1.02rem}
+.eyebrow{font-family:var(--fm);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--coral);font-weight:600;margin:0 0 9px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.55fr 1fr;gap:30px;align-items:start}
+.about .bio p{margin:0 0 15px;color:var(--ink2);font-size:1.04rem;line-height:1.68}
+.about .bio p:last-child{margin-bottom:0}
+.about .bio b{color:var(--ink);font-weight:700}
+.facts{background:var(--panel);border:2px solid var(--line);border-radius:18px;padding:18px 20px}
+.facts dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:9px 14px}
+.facts dt{font-family:var(--fm);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink3);padding-top:3px;white-space:nowrap}
+.facts dd{margin:0;font-size:.93rem;color:var(--ink2)}
+.facts dd b{color:var(--ink);font-weight:700}
+.gapnote{margin-top:14px;padding:11px 13px;border:2px dashed var(--wait);background:var(--wait-w);
+  border-radius:12px;font-family:var(--fm);font-size:10.5px;line-height:1.6;color:var(--wait)}
+
+/* research areas */
+.areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:14px;margin-top:20px}
+.area{background:var(--panel);border:2px solid var(--line);border-left:5px solid var(--violet);
+  border-radius:14px;padding:16px 18px}
+.area h3{font-family:var(--fd);font-weight:600;font-size:1.02rem;margin:0 0 6px;color:var(--ink)}
+.area p{margin:0;color:var(--ink2);font-size:.92rem;line-height:1.55}
+
+/* publications */
+.pubs{margin-top:22px;border-top:2px solid var(--line)}
+.pub{padding:18px 0;border-bottom:2px solid var(--line2);display:grid;
+  grid-template-columns:auto 1fr;gap:4px 16px}
+.pub:last-child{border-bottom:0}
+.pub .num{font-family:var(--fm);font-size:11px;color:var(--ink3);padding-top:4px;font-weight:600}
+.pub h3{font-family:var(--fb);font-weight:700;font-size:1.04rem;margin:0;color:var(--ink);line-height:1.4}
+.pub .venue{grid-column:2;font-size:.95rem;color:var(--ink2);margin:5px 0 0}
+.pub .venue em{font-style:normal;color:var(--violet);font-weight:700}
+.pub .note{grid-column:2;font-family:var(--fm);font-size:10.5px;line-height:1.65;color:var(--ink3);
+  margin:9px 0 0;padding-left:13px;border-left:3px solid var(--line)}
+.st{display:inline-block;font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1.5px solid;margin-left:8px;
+  vertical-align:middle}
+.st.under-review{color:var(--ok);border-color:var(--ok);background:var(--ok-w)}
+.st.submitted{color:var(--ok);border-color:var(--ok);background:var(--ok-w)}
+.st.draft{color:var(--wait);border-color:var(--wait);background:var(--wait-w)}
+
+/* leadership */
+.lead{margin-top:20px;display:grid;gap:16px}
+.role{background:var(--panel);border:2px solid var(--line);border-radius:18px;padding:20px 22px}
+.role-h{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;justify-content:space-between}
+.role h3{font-family:var(--fd);font-weight:600;font-size:1.14rem;margin:0;color:var(--ink)}
+.role .when{font-family:var(--fm);font-size:10.5px;color:var(--ink3);letter-spacing:.05em;white-space:nowrap}
+.role .what{margin:9px 0 0;color:var(--ink2);font-size:.97rem}
+.role ul{margin:14px 0 0;padding-left:0;list-style:none;display:grid;gap:12px}
+.role ul li{background:var(--card);border:2px solid var(--line2);border-left:5px solid var(--coral);
+  border-radius:12px;padding:13px 15px;color:var(--ink2);font-size:.95rem;line-height:1.6}
+.role ul li b{color:var(--ink);font-weight:700}
+
+/* honors */
+.honors{margin-top:18px;display:grid;gap:0;border-top:2px solid var(--line)}
+.honor{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:13px 0;
+  border-bottom:2px solid var(--line2);align-items:baseline}
+.honor:last-child{border-bottom:0}
+.honor b{font-weight:700;color:var(--ink);font-size:1rem}
+.honor .org{grid-column:1;color:var(--ink2);font-size:.9rem}
+.honor .yr{font-family:var(--fm);font-size:11px;color:var(--ink3);white-space:nowrap;grid-row:1/3}
+
+/* skills */
+.skills{margin-top:18px;display:grid;gap:0;border-top:2px solid var(--line)}
+.skill{display:grid;grid-template-columns:150px 1fr;gap:6px 18px;padding:12px 0;border-bottom:2px solid var(--line2)}
+.skill:last-child{border-bottom:0}
+.skill dt{font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink3);padding-top:3px}
+.skill dd{margin:0;color:var(--ink2);font-size:.95rem}
+
+/* ---------- projects ---------- */
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(276px,1fr));gap:14px;margin-top:20px}
+.feat,.card{text-align:left;cursor:pointer;font:inherit;color:inherit;background:var(--panel);
+  border:2px solid var(--line);border-top:6px solid var(--c);border-radius:18px;
+  display:flex;flex-direction:column;gap:8px;
+  transition:transform .16s cubic-bezier(.3,1.2,.5,1),box-shadow .16s,border-color .16s}
+.feat{padding:20px}
+.feat:hover,.card:hover{transform:translateY(-4px);box-shadow:0 14px 26px -16px rgba(16,6,40,.5)}
+.feat-eyebrow{font-family:var(--fm);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--c);font-weight:600}
+.feat-title{font-family:var(--fd);font-weight:600;font-size:1.3rem;line-height:1.16;color:var(--ink)}
+.feat-blurb{color:var(--ink2);font-size:.93rem;line-height:1.56}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 16px}
+.filt{font-family:var(--fd);font-weight:500;font-size:13px;cursor:pointer;background:var(--panel);
+  color:var(--ink2);border:2px solid var(--line);border-radius:999px;padding:7px 15px;
+  transition:background .14s,color .14s,border-color .14s}
+.filt:hover{border-color:var(--violet);color:var(--ink)}
+.filt.on{background:var(--violet);color:#fff;border-color:var(--violet)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:13px}
+.card{padding:17px 17px 14px;min-height:180px}
+.card-cat{font-family:var(--fm);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600}
+.card-title{font-family:var(--fd);font-weight:600;font-size:1.1rem;line-height:1.2;color:var(--ink)}
+.card-blurb{color:var(--ink2);font-size:.86rem;line-height:1.5;flex:1}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin-top:4px;padding-top:10px;border-top:1.5px solid var(--line)}
+.card-chip{font-family:var(--fm);font-size:9.5px;font-weight:600;color:var(--c);
+  background:color-mix(in srgb,var(--c) 12%,transparent);
+  border:1.5px solid color-mix(in srgb,var(--c) 40%,transparent);padding:4px 9px;border-radius:999px}
+.card-go{font-family:var(--fd);font-size:11.5px;font-weight:600;color:var(--ink3);white-space:nowrap}
+.card:hover .card-go{color:var(--c)}
+.filt:focus-visible,.card:focus-visible,.feat:focus-visible,.back:focus-visible,
+.bar a:focus-visible,.bar button:focus-visible{outline:3px solid #FFD9CE;outline-offset:3px}
+
+/* ---------- detail ---------- */
+.detail{background:var(--card);border-radius:24px;margin:20px 0 44px;
+  padding:clamp(22px,3.6vw,44px);border-top:9px solid var(--c);
+  box-shadow:0 16px 0 -6px rgba(29,14,60,.16),0 28px 50px -26px rgba(16,6,40,.55);
+  animation:in .26s cubic-bezier(.2,.9,.3,1)}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.detail{animation:none}.card,.feat,.filt{transition:none}}
+.back{font-family:var(--fd);font-weight:600;font-size:13.5px;cursor:pointer;background:var(--sunk);
+  color:var(--ink2);border:2px solid var(--line);border-radius:999px;padding:8px 17px;
+  transition:background .14s,color .14s}
+.back:hover{background:var(--c);color:#fff;border-color:var(--c)}
+.d-cat{font-family:var(--fm);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--c);font-weight:600;margin:22px 0 7px}
+.d-title{font-family:var(--fd);font-weight:600;font-size:clamp(1.6rem,4vw,2.5rem);line-height:1.1;
+  margin:0;color:var(--ink);text-wrap:balance}
+.d-chip{display:inline-block;font-family:var(--fm);font-size:11px;font-weight:600;color:var(--c);
+  background:color-mix(in srgb,var(--c) 12%,transparent);
+  border:2px solid color-mix(in srgb,var(--c) 42%,transparent);
+  padding:6px 13px;border-radius:999px;margin:14px 0 0}
+.d-body{margin-top:8px}
+.d-nav{margin-top:30px;padding-top:20px;border-top:2px dashed var(--line)}
+
+/* ---------- content primitives ---------- */
+.what{margin:14px 0 0;color:var(--ink2);max-width:70ch;font-size:1.02rem}
+.what strong{font-weight:700;color:var(--ink)}
+.kicker,.chip{display:none}
+.measured{margin:18px 0 0;background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:4px 16px}
+.measured dl{display:grid;grid-template-columns:1fr auto;margin:0}
+.measured dt,.measured dd{padding:9px 0;margin:0;border-bottom:1.5px solid var(--line2);font-size:.94rem;min-width:0}
+.measured dt{color:var(--ink2);padding-right:18px}
+.measured dd{font-family:var(--fm);font-size:.86rem;font-weight:600;text-align:right;
+  font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink)}
+.measured dl>dt:last-of-type,.measured dl>dd:last-of-type{border-bottom:0}
+.measured dd.pos{color:var(--ok)} .measured dd.neg{color:var(--warn)}
+.src{font-family:var(--fm);font-size:11.5px;line-height:1.65;color:var(--ink3);
+  margin:16px 0 0;padding-left:14px;border-left:3px solid var(--line)}
+.src b{color:var(--ink2);font-weight:600}
+.correction{margin:18px 0 0;padding:16px 18px;background:var(--warn-w);border:2px solid var(--warn);
+  border-radius:14px;font-size:.96rem;line-height:1.6;color:var(--ink)}
+.correction .h{font-family:var(--fd);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--warn);display:block;margin-bottom:7px;font-weight:600}
+.principle{margin:22px 0 0;padding:20px 22px;border-radius:16px;background:var(--ok-w);border:2px solid var(--ok)}
+.principle p{margin:0;font-size:1.04rem;line-height:1.6;color:var(--ink)}
+.principle .h{font-family:var(--fd);font-weight:600;font-size:1rem;display:block;margin-bottom:8px;color:var(--ok)}
+.note{margin:20px 0 0;padding:16px 18px;background:var(--panel);border:2px dashed var(--line);
+  border-radius:14px;font-size:.96rem;color:var(--ink2);line-height:1.6}
+.note b{color:var(--ink);font-weight:700}
+figure.drawing,figure.photo{margin:20px 0 0;padding:16px;background:var(--panel);
+  border:2px solid var(--line);border-radius:16px}
+figure.drawing svg,figure.photo img{display:block;width:100%;height:auto;max-width:100%;border-radius:10px}
+figure.drawing figcaption,figure.photo figcaption{font-family:var(--fm);font-size:10.5px;line-height:1.62;
+  color:var(--ink3);margin-top:13px;padding-top:12px;border-top:2px solid var(--line)}
+figcaption b{color:var(--ink2);font-weight:600}
+.photo-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:20px}
+.photo-row figure{margin-top:0}
+.d-out{fill:none;stroke:var(--ink);stroke-width:1.4}
+.d-thin{fill:none;stroke:var(--ink2);stroke-width:.8}
+.d-dim{fill:none;stroke:var(--coral);stroke-width:.75}
+.d-hid{fill:none;stroke:var(--ink3);stroke-width:.7;stroke-dasharray:4 3}
+.d-ctr{fill:none;stroke:var(--ink3);stroke-width:.6;stroke-dasharray:9 3 2 3}
+.d-fill{fill:var(--line2);stroke:var(--ink2);stroke-width:.9}
+.d-fill2{fill:var(--ok-w);stroke:var(--ok);stroke-width:.9}
+.d-hot{fill:var(--warn-w);stroke:var(--warn);stroke-width:.9}
+.d-lbl{font-family:var(--fm);font-size:9.5px;fill:var(--ink2)}
+.d-lbl-k{font-family:var(--fm);font-size:9.5px;fill:var(--coral);font-weight:500}
+.d-lbl-b{font-family:var(--fd);font-size:11px;fill:var(--ink);font-weight:600}
+.tbl-scroll{overflow-x:auto;margin:20px 0 0;border:2px solid var(--line);border-radius:14px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:540px}
+th,td{text-align:left;padding:11px 14px;font-size:.9rem;border-bottom:1.5px solid var(--line2);vertical-align:top}
+th{font-family:var(--fm);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink3);font-weight:600;background:var(--sunk);white-space:nowrap}
+td{color:var(--ink2)} td b{font-weight:700;color:var(--ink)}
+td.m{font-family:var(--fm);font-size:.82rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+.out-lost{color:var(--warn);font-family:var(--fm);font-size:.79rem;font-weight:500}
+.out-won{color:var(--ok);font-family:var(--fm);font-size:.79rem;font-weight:500}
+.out-open{color:var(--wait);font-family:var(--fm);font-size:.79rem;font-weight:500}
+.glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0 0}
+.glance div{background:var(--panel);border:2px solid var(--line);border-radius:16px;padding:16px 17px}
+.glance .n{font-family:var(--fd);font-size:1.7rem;font-weight:700;color:var(--coral);display:block;line-height:1.05}
+.glance .k{font-family:var(--fm);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink3);display:block;margin-top:8px;line-height:1.45}
+h4.sub{font-family:var(--fd);font-weight:600;font-size:1.1rem;margin:32px 0 0;color:var(--ink)}
+ul.tight{max-width:70ch;padding-left:20px;margin:14px 0 0;color:var(--ink2)}
+ul.tight li{margin-bottom:9px;line-height:1.58}
+ul.tight li::marker{color:var(--coral)}
+ul.tight b{color:var(--ink);font-weight:700}
+.prose{max-width:70ch;color:var(--ink2)} .prose p{margin:13px 0 0}
+code{font-family:var(--fm);font-size:.88em;background:var(--sunk);padding:1px 6px;border-radius:6px;border:1.5px solid var(--line2)}
+caption{caption-side:bottom;text-align:left}
+
+footer.foot{color:rgba(255,255,255,.88);font-family:var(--fm);font-size:11px;line-height:1.8;
+  padding-block:26px 48px;border-top:2px solid rgba(255,255,255,.26);margin-top:12px}
+footer.foot a{color:#FFD9CE}
+
+@media (max-width:820px){
+  .about{grid-template-columns:1fr;gap:22px}
+  .bar nav{display:none}
+  .skill{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .measured dl{grid-template-columns:1fr}
+  .measured dd{text-align:left;padding-top:0}
+  .measured dt{padding-bottom:2px;border-bottom:0}
+  .pub{grid-template-columns:1fr}
+  .pub .num{display:none}
+  .pub .venue,.pub .note{grid-column:1}
+}
+</style>
+
+<div class="bar">
+  <div class="bar-in">
+    <button class="me" type="button" id="brand">Dayeon Kang</button>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#honors">Honors</a>
+    </nav>
+    <a class="cta" href="mailto:dayeon603@gmail.com">Contact</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="home">
+    <header class="hero">
+      <p class="kick">Independent researcher &middot; Seongnam, Republic of Korea</p>
+      <h1 class="big">Dayeon<br>Kang</h1>
+      <p class="pos">Independent researcher working on machine metacognition, assistive hardware and the verification infrastructure that decides whether an automated system should be trusted with a decision.</p>
+      <div class="ident">
+        <a href="mailto:dayeon603@gmail.com">dayeon603@gmail.com</a>
+        <a href="https://github.com/dayeon603-pixel">github.com/dayeon603-pixel</a>
+        <a href="https://orcid.org/0009-0006-4481-0277">ORCID 0009-0006-4481-0277</a>
+      </div>
+      <div class="stats">
+        <div><b>3</b><span>papers under review</span></div>
+        <div><b>32</b><span>projects documented</span></div>
+        <div><b>46</b><span>repositories authored</span></div>
+        <div><b>2</b><span>ordinances proposed</span></div>
+      </div>
+    </header>
+
+    <section class="blk" id="about">
+      <p class="eyebrow">About</p>
+      <h2>Measurement first, and the retractions kept in</h2>
+      <div class="about">
+        <div class="bio"><p>I build research systems and then measure whether they actually work. Between March and October 2026 that came to 46 repositories across machine metacognition, silent-speech interfaces, acoustic haptics, swarm reconfiguration, trade and compliance infrastructure, and civic tooling, with three manuscripts submitted and four more in draft.</p><p>The thread running through all of it is calibration: not whether a model is accurate, but whether it knows when it is about to be wrong. My first result was that those two things pull in opposite directions. Across seven frontier language models, the ones that answered best were the least able to recognise a question they should not have answered at all. That finding became the foundation for four later projects and for a municipal ordinance.</p><p>I also chair the Seongnam Youth Council, where the same question shows up without any machine learning in it: how do you write a rule that still works after the person who wrote it leaves? Two ordinances came out of that, one on reliability verification for administrative AI and one on elderly pedestrian protection zones. A tool I maintain stops when I stop. An ordinance does not.</p></div>
+        <aside>
+          <div class="facts">
+            <dl>
+              <dt>Based</dt><dd><b>Seongnam, Gyeonggi-do</b><br>Republic of Korea</dd>
+              <dt>ORCID</dt><dd>0009-0006-4481-0277</dd>
+              <dt>Role</dt><dd>Chair, Seongnam Youth Council</dd>
+              <dt>Entity</dt><dd>아비터 (Arbiter)<br>Reg. 414-01-72904</dd>
+              <dt>Languages</dt><dd>Korean (native), English</dd>
+            </dl>
+          </div>
+          <div class="gapnote"><b>To add:</b> Education — School name, expected graduation year, and any coursework worth listing. &middot; Portrait — A photograph for the header, if you want one there. &middot; Youth council media — The city-hall presentation photo from the ordinance work.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk" id="research">
+      <p class="eyebrow">Research</p>
+      <h2>Research areas and manuscripts</h2>
+      <p class="lede">Three manuscripts are under review and four are in draft. Status labels are
+        deliberately conservative: a draft is called a draft, and nothing here is described as
+        published.</p>
+      <div class="areas"><div class="area"><h3>Machine metacognition and calibration</h3><p>Whether a model can recognise its own failure modes before committing to an answer, and whether a single temperature can correct confidence when the right correction varies by input.</p></div><div class="area"><h3>Assistive and accessible hardware</h3><p>Silent-speech decoding from surface electromyography, refreshable tactile graphics, and non-contact acoustic haptics, all costed against devices that currently price people out.</p></div><div class="area"><h3>Verification and trust infrastructure</h3><p>Deterministic decision engines with signed, replayable evidence, so a decision made eighteen months ago can be reproduced against the rules as they stood that day.</p></div><div class="area"><h3>Applied thermal and acoustic engineering</h3><p>Closed-form results for coolant-limited wafer-scale compute, and three-dimensional thermal modelling for off-grid cold storage.</p></div></div>
+      <h4 class="sub">Manuscripts</h4>
+      <div class="pubs"><div class="pub"><span class="num">01</span><h3>When Does One Temperature Suffice? The Sharpening Exponent as a Representational Mismatch</h3><p class="venue"><em>IEEE ICASSP 2027</em><span class="st under-review">Under review</span></p><p class="note">Single author. Submitted September 2026, decision due 13 January 2027. Reports five negative results alongside the positive one. An audit script of 212 checks recomputes every number in the manuscript.</p></div><div class="pub"><span class="num">02</span><h3>Data Element Availability and the Condition-Dependent Axis of Medication-Safety Indicators</h3><p class="venue"><em>Korean Society of Medical Informatics, 2026 autumn conference</em><span class="st under-review">Under review</span></p><p class="note">Dayeon Kang and Nicole Saint-Aubin (corresponding author), MICA International Scholars. Accession 26F-0161. Reviewed and offered an e-poster session with on-site judging. Asks whether a medication-safety rule that conditions on a patient&#x27;s clinical state survives being operationalised, and finds that substrate composition bounds it: none of five national datasets carries a diagnosis field. Costed on 1,345 adults aged 65 and over in NHANES 2017-2018 and repeated on an independent cycle of 1,205. Deleting the condition widens eight rules from 285 people to 892, and 68.0% of those flagged lack the condition (95% CI, 64.9-71.4). Wilson intervals, 2,000 seeded bootstrap draws resampling people rather than pairs, and a survey-weighted estimate alongside.</p></div><div class="pub"><span class="num">03</span><h3>A closed-form power-grading law for coolant-limited wafer-scale compute</h3><p class="venue"><em>33rd Samsung Humantech Paper Award, high-school division</em><span class="st under-review">Under review</span></p><p class="note">Abstract stage. G(β) = (1 − e^−β)(1 + β)/β, giving +19.7% total power at the wafer-scale reference point. The optimum&#x27;s location was pre-registered before any numerical work.</p></div><div class="pub"><span class="num">04</span><h3>The Limits of Unlearning a Clean-Label Detection Backdoor</h3><p class="venue"><em>Targeting WIPE-OUT 2 at ECML PKDD</em><span class="st draft">Draft</span></p><p class="note">Proves detection-level filtering is futile in principle rather than concluding it after the levers ran out. Poisoned-model reproduction validated to six significant figures.</p></div><div class="pub"><span class="num">05</span><h3>Per-request energy attribution for large language model inference</h3><p class="venue"><em>Targeting MLSys 2027</em><span class="st draft">Draft</span></p><p class="note">Reports three results that cut against the project&#x27;s own thesis, including a crossover whose direction reproduces across measurement sessions but whose location does not.</p></div><div class="pub"><span class="num">06</span><h3>Structured Perturbation Stability: an operator-restricted framework for semantic invariance</h3><p class="venue"><em>Unpublished manuscript</em><span class="st draft">Draft</span></p><p class="note">Five theorems and two corollaries with proofs carried alongside the implementation. The large-scale empirical study is not yet run, and the manuscript says so.</p></div><div class="pub"><span class="num">07</span><h3>MetaMirage: a mirage-pair benchmark for metacognitive monitoring</h3><p class="venue"><em>Google DeepMind × Kaggle AGI benchmark challenge, metacognition track</em><span class="st submitted">Submitted</span></p><p class="note">Submitted April 2026. Public repository, public dataset and a dashboard that runs without a server. r = −0.84 across seven models, stable under four independent statistical tests.</p></div></div>
+    </section>
+
+    <section class="blk" id="projects">
+      <p class="eyebrow">Selected work</p>
+      <h2>Projects</h2>
+      <p class="lede">Every headline figure below can be recomputed from a repository. Open any
+        card for the full write-up, the measured numbers and the limitations.</p>
+      <div class="feats">
+      <button class="feat" data-slug="sign-flip" style="--c:#7C4DFF">
+        <span class="feat-eyebrow">r = −0.84 across 7 models</span>
+        <span class="feat-title">The sign-flip</span>
+        <span class="feat-blurb">Across seven frontier language models and fifty paired tasks, the models that answer best are the ones least able to tell when they should not answer. Survives four independent statistical tests.</span>
+        <span class="card-go">Open &rarr;</span>
+      </button>
+      <button class="feat" data-slug="retraining" style="--c:#00B39F">
+        <span class="feat-eyebrow">30,000 real customers</span>
+        <span class="feat-title">The retraining misreport rate</span>
+        <span class="feat-blurb">Retraining a risk model with the customer population held completely constant makes today&#x27;s system misreport 15.5% of its own past decisions. The model moved; the people did not.</span>
+        <span class="card-go">Open &rarr;</span>
+      </button>
+      <button class="feat" data-slug="attrition" style="--c:#7C4DFF">
+        <span class="feat-eyebrow">6 jurisdictions of primary sources</span>
+        <span class="feat-title">The attrition gradient</span>
+        <span class="feat-blurb">Condition-dependent clinical judgement does not vanish from health systems uniformly. It thins in proportion to how close an indicator sits to money.</span>
+        <span class="card-go">Open &rarr;</span>
+      </button></div>
+      <div class="filters"><button class="filt on" data-f="all">Everything</button><button class="filt" data-f="research" style="--c:#7C4DFF">Research</button><button class="filt" data-f="hardware" style="--c:#FF7A5C">Hardware</button><button class="filt" data-f="ventures" style="--c:#00B39F">Ventures</button><button class="filt" data-f="civic" style="--c:#F5A524">Civic &amp; Climate</button><button class="filt" data-f="compml" style="--c:#FF5FA2">Competitive ML</button><button class="filt" data-f="method" style="--c:#3B82F6">Method</button></div>
+      <div class="grid" id="grid">
+      <button class="card" data-cat="research" data-slug="metamirage" style="--c:#7C4DFF">
+        <span class="card-cat">Research</span>
+        <span class="card-title">MetaMirage</span>
+        <span class="card-blurb">A benchmark that measures whether a model knows when it is about to be wrong, built on matched task pairs so detection is scored against a control rather than raw accuracy.</span>
+        <span class="card-foot"><span class="card-chip">Submitted · DeepMind × Kaggle</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="research" data-slug="temperature" style="--c:#7C4DFF">
+        <span class="card-cat">Research</span>
+        <span class="card-title">When Does One Temperature Suffice?</span>
+        <span class="card-blurb">When is a single scalar temperature the right correction for a model&#x27;s confidence? Predicts in advance which groupings one temperature will fail on. ρ = +0.964, up to 54.1% calibration-error reduction.</span>
+        <span class="card-foot"><span class="card-chip">Under review · IEEE ICASSP 2027</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="research" data-slug="aegis" style="--c:#7C4DFF">
+        <span class="card-cat">Research</span>
+        <span class="card-title">Aegis wafer</span>
+        <span class="card-blurb">Grading heat-source power along a wafer-scale coolant pass buys back usable watts, and the amount is a closed form. The optimum&#x27;s location was pre-registered before any numerical work.</span>
+        <span class="card-foot"><span class="card-chip">Closed-form law · +19.7%</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="research" data-slug="ascent" style="--c:#7C4DFF">
+        <span class="card-cat">Research</span>
+        <span class="card-title">Ascent</span>
+        <span class="card-blurb">A predict-then-measure harness for one gate of recursive self-improvement: a proposer writes a modification, a predictor forecasts its effect before any evaluation, and only measured gain is accepted.</span>
+        <span class="card-foot"><span class="card-chip">Containment built before capability</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="research" data-slug="landauer" style="--c:#7C4DFF">
+        <span class="card-cat">Research</span>
+        <span class="card-title">Landauer</span>
+        <span class="card-blurb">Attributing measured joules to a single language-model inference request, and testing whether the usual efficiency levers survive real measurement.</span>
+        <span class="card-foot"><span class="card-chip">MLSys 2027 · energy attribution</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="research" data-slug="sps" style="--c:#7C4DFF">
+        <span class="card-cat">Research</span>
+        <span class="card-title">Structured Perturbation Stability</span>
+        <span class="card-blurb">An operator-restricted framework that measures whether a transformer ignores what it ought to ignore, by measuring sensitivity only along semantics-preserving transformations.</span>
+        <span class="card-foot"><span class="card-chip">5 theorems, 2 corollaries</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="research" data-slug="korean-pim" style="--c:#7C4DFF">
+        <span class="card-cat">Research</span>
+        <span class="card-title">Korean prescribing criteria as a rule engine</span>
+        <span class="card-blurb">A national consensus medication list turned into a deterministic, machine-readable engine, verified against the source article as sets and in order rather than trusted.</span>
+        <span class="card-foot"><span class="card-chip">Exact-match verified · 401 checks</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="research" data-slug="arc" style="--c:#7C4DFF">
+        <span class="card-cat">Research</span>
+        <span class="card-title">Localising why interactive agents fail</span>
+        <span class="card-blurb">An ablation spine across 25 hidden interactive games that pins down exactly where reasoning agents break: goal inference, not dynamics modelling and not exploration.</span>
+        <span class="card-foot"><span class="card-chip">Bottleneck localised</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="hardware" data-slug="harvestguard" style="--c:#FF7A5C">
+        <span class="card-cat">Hardware</span>
+        <span class="card-title">HarvestGuard</span>
+        <span class="card-blurb">Solar cold storage for smallholder produce, sized against real hourly weather. The three-dimensional model found a stratification a single-temperature model cannot see, and it changes the setpoint.</span>
+        <span class="card-foot"><span class="card-chip">8,925-cell thermal model</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="hardware" data-slug="atsi" style="--c:#FF7A5C">
+        <span class="card-cat">Hardware</span>
+        <span class="card-title">AirTouch Spatial Interface</span>
+        <span class="card-blurb">Can one scalar field govern both what you see and what you feel, so two pipelines cannot silently drift apart? The project found and corrected three measurement errors in its own work.</span>
+        <span class="card-foot"><span class="card-chip">Patent drafted · 3 errors caught</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="hardware" data-slug="felt" style="--c:#FF7A5C">
+        <span class="card-cat">Hardware</span>
+        <span class="card-title">FELT</span>
+        <span class="card-blurb">A refreshable tactile graphics display for blind students at a fraction of commercial cost, driven by the same signed-distance-field mathematics as the acoustic work.</span>
+        <span class="card-foot"><span class="card-chip">103 tests · SDF pipeline</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="hardware" data-slug="neuroswarm" style="--c:#FF7A5C">
+        <span class="card-cat">Hardware</span>
+        <span class="card-title">NeuroSwarm</span>
+        <span class="card-blurb">Driving a robot swarm from a signal channel four orders of magnitude too narrow to specify what it should do. A classical decoder beat the deep one on the same held-out split.</span>
+        <span class="card-foot"><span class="card-chip">0.862 decode · 30/30 closed loop</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="hardware" data-slug="neurovoice" style="--c:#FF7A5C">
+        <span class="card-cat">Hardware</span>
+        <span class="card-title">NeuroVoice</span>
+        <span class="card-blurb">Surface electromyography decoded to speech for people who have lost it, at a $152 bill of materials against $5,000 to $20,000 devices, with articulatory clusters chosen to make one decoder cross-lingual.</span>
+        <span class="card-foot"><span class="card-chip">928 tests · 28 languages</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="ventures" data-slug="arbiter-core" style="--c:#00B39F">
+        <span class="card-cat">Ventures</span>
+        <span class="card-title">arbiter-core</span>
+        <span class="card-blurb">A deterministic decision core that evaluates a rulebook, signs the decision, and records it in a ledger anyone can verify offline without trusting the server that issued it.</span>
+        <span class="card-foot"><span class="card-chip">Ed25519 + hash-chained ledger</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="ventures" data-slug="signet" style="--c:#00B39F">
+        <span class="card-cat">Ventures</span>
+        <span class="card-title">Signet</span>
+        <span class="card-blurb">Pre-spend authorisation for autonomous agents. Enforcement lives as a runtime interceptor in front of the tool, because an agent-invoked guard is bypassable by the same injection it defends against.</span>
+        <span class="card-foot"><span class="card-chip">511 tests · 0.7 ms median</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="ventures" data-slug="caravan" style="--c:#00B39F">
+        <span class="card-cat">Ventures</span>
+        <span class="card-title">Caravan</span>
+        <span class="card-blurb">A marketplace-neutral customs compliance rail. A constrained reranker picks among retrieved candidates by index, so it cannot invent a tariff code that was never retrieved.</span>
+        <span class="card-foot"><span class="card-chip">1,331 tests · 18,253 rulings</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="ventures" data-slug="tollgate" style="--c:#00B39F">
+        <span class="card-cat">Ventures</span>
+        <span class="card-title">Tollgate</span>
+        <span class="card-blurb">Examiner-replayable compliance evidence: making an eighteen-month-old decision replay against the sanctions list as it stood that day, which most stacks cannot do.</span>
+        <span class="card-foot"><span class="card-chip">205 public conformance vectors</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="ventures" data-slug="halo" style="--c:#00B39F">
+        <span class="card-cat">Ventures</span>
+        <span class="card-title">HALO, Goldentime and Keel</span>
+        <span class="card-blurb">Three stages of one fraud kill chain: authenticity, then intent, then recovery. An on-device Korean model watches for scam intent with metacognitive calibration on its own confidence.</span>
+        <span class="card-foot"><span class="card-chip">0.880 macro F1 · 485 tests</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="ventures" data-slug="veracity" style="--c:#00B39F">
+        <span class="card-cat">Ventures</span>
+        <span class="card-title">Veracity, AlphaNexus and the concept lane</span>
+        <span class="card-blurb">Selling better detection against a fourteen-year incumbent is not a strategy. The wedge is the compliance artefact a bank is legally required to file, and the portfolio risk engine beside it.</span>
+        <span class="card-foot"><span class="card-chip">Regulatory wedge identified</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="ventures" data-slug="olyak" style="--c:#00B39F">
+        <span class="card-cat">Ventures</span>
+        <span class="card-title">Olyak</span>
+        <span class="card-blurb">Polypharmacy safety for older adults collecting prescriptions from hospitals that never see each other&#x27;s lists. Every judgement is a deterministic rule, verified against source on every run.</span>
+        <span class="card-foot"><span class="card-chip">102 criteria · no model in the path</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="civic" data-slug="ganeumja" style="--c:#F5A524">
+        <span class="card-cat">Civic &amp; Climate</span>
+        <span class="card-title">Ganeumja</span>
+        <span class="card-blurb">A municipal ordinance on administrative-AI trustworthiness, proposed as council chair and then compiled into runnable code. Each article maps one-to-one onto a module that tests it.</span>
+        <span class="card-foot"><span class="card-chip">Ordinance proposed, then executed</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="civic" data-slug="farmpilot" style="--c:#F5A524">
+        <span class="card-cat">Civic &amp; Climate</span>
+        <span class="card-title">FarmPilot and ReField</span>
+        <span class="card-blurb">A crop-diagnosis copilot built around the insight that a phone photo is a targeted probe rather than a census, and a satellite matcher for idle farmland validated on 62 real observations.</span>
+        <span class="card-foot"><span class="card-chip">97.84% validation accuracy</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="civic" data-slug="synaptic" style="--c:#F5A524">
+        <span class="card-cat">Civic &amp; Climate</span>
+        <span class="card-title">SYNAPTIC</span>
+        <span class="card-blurb">A development simulation that registered its own pass condition before running, then held to it. Fifty-one pieces were written and not one carries an unvalidated projection.</span>
+        <span class="card-foot"><span class="card-chip">Pre-registered gate, honoured</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="civic" data-slug="social" style="--c:#F5A524">
+        <span class="card-cat">Civic &amp; Climate</span>
+        <span class="card-title">Dungji, Dodam and RootsLink</span>
+        <span class="card-blurb">Three social systems described at the maturity they actually have. The saturation audit was the valuable part: it found an incumbent for ten adjacent ideas and zero tools for the population that needed one.</span>
+        <span class="card-foot"><span class="card-chip">Market audit killed 10 ideas</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="compml" data-slug="nemotron" style="--c:#FF5FA2">
+        <span class="card-cat">Competitive ML</span>
+        <span class="card-title">Nemotron</span>
+        <span class="card-blurb">The winning move was not architectural, it was decoding the benchmark: nine thousand rows turned out to be six puzzle families, so the training set could be rebuilt with fully correct labels.</span>
+        <span class="card-foot"><span class="card-chip">0.720 · benchmark decoded</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="compml" data-slug="orbit" style="--c:#FF5FA2">
+        <span class="card-cat">Competitive ML</span>
+        <span class="card-title">Orbit Wars</span>
+        <span class="card-blurb">Nine consecutive ideas lost to one agent, and the reason a month of A/B testing lied: it was mirror testing against agents that shared the same blind spot.</span>
+        <span class="card-foot"><span class="card-chip">510 → 847.9 on the real ladder</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="compml" data-slug="debris" style="--c:#FF5FA2">
+        <span class="card-cat">Competitive ML</span>
+        <span class="card-title">Neural Debris</span>
+        <span class="card-blurb">Removing a clean-label backdoor from a detection model, and proving filtering is futile in principle rather than assuming it after the levers ran out.</span>
+        <span class="card-foot"><span class="card-chip">379 → 237 · ceiling proved</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="method" data-slug="dispatch" style="--c:#3B82F6">
+        <span class="card-cat">Method</span>
+        <span class="card-title">Dispatch and external memory</span>
+        <span class="card-blurb">How one person produced this much: role specialists dispatched in parallel, shared state in files under a locking protocol, and an explicit rule that an agent&#x27;s output is evidence rather than fact.</span>
+        <span class="card-foot"><span class="card-chip">11-specialist review</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="method" data-slug="tools" style="--c:#3B82F6">
+        <span class="card-cat">Method</span>
+        <span class="card-title">Personal systems</span>
+        <span class="card-blurb">Tools built for an audience of one, which is a legitimate design constraint. The interesting engineering is the linting that caught answer-shape exploits in my own content.</span>
+        <span class="card-foot"><span class="card-chip">Quality gates that found real defects</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="method" data-slug="how-to-read" style="--c:#3B82F6">
+        <span class="card-cat">Method</span>
+        <span class="card-title">How to read every number here</span>
+        <span class="card-blurb">The rule that shapes everything else: a result that cannot be reproduced by one command is not a result yet, and four working conventions that follow from it.</span>
+        <span class="card-foot"><span class="card-chip">Practice</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="research" data-slug="papers" style="--c:#7C4DFF">
+        <span class="card-cat">Research</span>
+        <span class="card-title">Papers and their real status</span>
+        <span class="card-blurb">Seven manuscripts across calibration theory, medical informatics, semiconductor thermal design and machine-learning security, each labelled with the status it actually has.</span>
+        <span class="card-foot"><span class="card-chip">Practice</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="ventures" data-slug="arbiter" style="--c:#00B39F">
+        <span class="card-cat">Ventures</span>
+        <span class="card-title">Arbiter, the company</span>
+        <span class="card-blurb">A registered Korean business and the shared four-step engine underneath every product in this group: ingest a fact, apply a written rulebook, decide, attest the decision.</span>
+        <span class="card-foot"><span class="card-chip">Practice</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="compml" data-slug="record" style="--c:#FF5FA2">
+        <span class="card-cat">Competitive ML</span>
+        <span class="card-title">Submissions and record</span>
+        <span class="card-blurb">Twenty entries across research venues, startup competitions and public leaderboards, each with its real outcome and date, and the one structural lesson that came out of them.</span>
+        <span class="card-foot"><span class="card-chip">Practice</span><span class="card-go">Open &rarr;</span></span>
+      </button>
+      <button class="card" data-cat="method" data-slug="verification" style="--c:#3B82F6">
+        <span class="card-cat">Method</span>
+        <span class="card-title">How I verify my own numbers</span>
+        <span class="card-blurb">The audits that caught ten figures in my own work before anyone else saw them, and the falsified hypotheses that produced stronger results than the ones I set out to prove.</span>
+        <span class="card-foot"><span class="card-chip">Practice</span><span class="card-go">Open &rarr;</span></span>
+      </button></div>
+    </section>
+
+    <section class="blk" id="leadership">
+      <p class="eyebrow">Leadership and service</p>
+      <h2>Writing rules that outlast the person who wrote them</h2>
+      <div class="lead"><div class="role"><div class="role-h"><h3>Chair, Seongnam Youth Council</h3><span class="when">January 2025 – present</span></div><p class="what">Elected as a member by youth vote, then elected chair by the members. Runs sessions and the agenda, and negotiates directly with city officials.</p><ul><li><b>Ordinance on reliability verification and citizen impact assessment for administrative artificial intelligence</b>, proposed June 2026. Its statement of reasons cites my own metacognition result. I then compiled the ordinance into runnable code, one module per article, so its requirements are testable rather than aspirational.</li><li><b>Ordinance on elderly pedestrian protection zones</b>, mobility-safety task force 2026, presented at city hall. Of 920 pedestrian deaths in 2024, 616 were people aged 65 or over, yet protection zones clustered around welfare facilities rather than the markets and clinics people actually cross to reach. The draft fixes designation criteria to three years of accident data, prioritises the old town centre, and requires inspection reporting back to the council. It carries no penalties by design, so it cannot conflict with higher law and can take effect immediately, and its finance clause ties to a national maintenance programme with 50% provincial matching.</li></ul></div><div class="role"><div class="role-h"><h3>Founder and proprietor, 아비터 (Arbiter)</h3><span class="when">June 2025 – present</span></div><p class="what">A registered Korean sole proprietorship, business registration 414-01-72904, and the parent for a family of verification products built on one shared engine.</p></div></div>
+    </section>
+
+    <section class="blk" id="honors">
+      <p class="eyebrow">Honors</p>
+      <h2>Awards and recognition</h2>
+      <div class="honors"><div class="honor"><b>Grand Prize, Top-Class Representative Figure</b><span class="yr">2024</span><span class="org">ICAE International Conference on the Global Environment</span></div><div class="honor"><b>UN SDGs Global Leader</b><span class="yr">2024</span><span class="org">KIECC UN SDG International Speech Competition</span></div><div class="honor"><b>Speaker of the Seoul Metropolitan Council Award</b><span class="yr">2024</span><span class="org">4th Plastic-Free Competition, HOBY Korea</span></div><div class="honor"><b>Speaker of the Gyeonggi Provincial Council Award</b><span class="yr">2025</span><span class="org">5th Plastic-Free Competition, HOBY Korea</span></div><div class="honor"><b>Embassy of the Philippines Award</b><span class="yr">2026</span><span class="org">31st International Youth Diplomacy Forum (DIFOS)</span></div><div class="honor"><b>Excellence Award, Chairman of the Korea Youth Work Agency</b><span class="yr">2026</span><span class="org">2026 Outstanding Case Competition, International Award for Young People division, Korea Youth Work Agency</span></div><div class="honor"><b>Silver and Bronze Award</b><span class="yr">2024–25</span><span class="org">International Award for Young People (Duke of Edinburgh&#x27;s International Award), Ministry of Gender Equality and Family</span></div></div>
+      <h4 class="sub">Technical</h4>
+      <dl class="skills"><div class="skill"><dt>Languages</dt><dd>Python, TypeScript and JavaScript, C and embedded C, LaTeX, SQL</dd></div><div class="skill"><dt>Machine learning</dt><dd>PyTorch, HuggingFace Transformers, connectionist temporal classification, low-rank adaptation, calibration and uncertainty estimation, statistical power analysis</dd></div><div class="skill"><dt>Systems</dt><dd>FastAPI, Ed25519 signing and hash-chained ledgers, SQLite with encrypted columns, Prometheus instrumentation, GitHub Actions</dd></div><div class="skill"><dt>Engineering</dt><dd>Finite-volume thermal modelling, acoustic field simulation, parametric CAD, ESP32 and microcontroller firmware, signed distance fields</dd></div><div class="skill"><dt>Practice</dt><dd>Pre-registration, leakage auditing, negative controls, append-only failure logs, reproducibility scripts that recompute every published number</dd></div></dl>
+    </section>
+  </div>
+
+  <div id="details">
+    <article class="detail" id="p-sign-flip" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">The sign-flip</h2>
+      <p class="d-chip">r = −0.84 across 7 models</p>
+      <div class="d-body"><p class="what">
+      Across seven frontier language models and fifty hand-built paired tasks, trap detection
+      and accuracy correlate at <strong>r = &minus;0.84</strong>. The models that answer best are
+      the ones least able to tell when they should not answer at all. The pre-registered
+      hypothesis was falsified in the opposite direction from the one predicted, and that
+      reversal became the headline.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Fisher-z 95% confidence interval, Student's t</dt><dd>[&minus;0.98, &minus;0.24], p = 0.018</dd>
+        <dt>Bootstrap 95% interval, 10,000 resamples</dt><dd>[&minus;0.99, &minus;0.58]</dd>
+        <dt>Permutation test, 10,000 label shuffles</dt><dd>p = 0.023</dd>
+        <dt>Leave-one-out stability, minimum absolute r across 7 folds</dt><dd>0.81</dd>
+        <dt>Cross-judge agreement, Cohen's &kappa; over six rubric dimensions</dt><dd>0.65 to 0.97</dd>
+      </dl>
+    </div>
+    <div class="note">
+      <b>n is seven.</b> Three independent interval methods, leave-one-out stability and a
+      cross-judge check all agree on the sign, which is better hedged than a typical
+      small-sample correlation. Seven is still seven, and the mechanistic account that
+      confidence pressure during preference training causes it is a hypothesis consistent with
+      the data rather than something the data proves. The counterexample matters more than the
+      correlation: one small recent model tops the metacognitive index while still scoring 96.3%
+      accuracy, so the trade-off is a training artefact and therefore a tractable target, not a
+      law of nature.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-retraining" style="--c:#00B39F" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Ventures</p>
+      <h2 class="d-title">The retraining misreport rate</h2>
+      <p class="d-chip">30,000 real customers</p>
+      <div class="d-body"><p class="what">
+      On 30,000 real credit customers, retraining a risk model <strong>with the customer
+      population held completely constant</strong> makes a re-run of today's system misreport
+      15.5% of its own past decisions. The model moved; the people did not. That is the argument
+      for keeping dated evidence of a decision rather than the system that made it.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Misreported past decisions, population held constant</dt><dd class="neg">15.5% [14.7, 16.3]</dd>
+        <dt>With population drift</dt><dd class="neg">21.3%</dd>
+        <dt>Simulated high drift</dt><dd class="neg">25.4%</dd>
+        <dt>Decision reconstruction accuracy, without an evidence rail</dt><dd>84.5%</dd>
+        <dt>With one</dt><dd class="pos">100%</dd>
+      </dl>
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-attrition" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">The attrition gradient</h2>
+      <p class="d-chip">6 jurisdictions of primary sources</p>
+      <div class="d-body"><p class="what">
+      I believed one national payer had uniquely dropped condition-dependent prescribing
+      criteria. Six jurisdictions of primary sources <strong>refuted it</strong>. The replacement
+      finding is stronger than what I set out to prove: condition-dependent clinical judgement
+      does not vanish from health systems uniformly, it <strong>thins in proportion to how close
+      an indicator sits to money.</strong>
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Survives in clinical decision support</dt><dd class="pos">2 of 2</dd>
+        <dt>Survives in quality-indicator specifications</dt><dd class="pos">1 of 1</dd>
+        <dt>Thins in public rating</dt><dd>1 of 3</dd>
+        <dt>Vanishes in payment and financial incentives</dt><dd class="neg">0 of 4</dd>
+      </dl>
+    </div>
+    <p class="src">
+      <b>The part I did not cherry-pick.</b> A rating body removed a condition-dependent measure
+      on the stated grounds that it was highly correlated with a broader drug-only measure. That
+      is a testable empirical claim, so I tested it. Overlap of 92.0% supports them, but
+      &phi; = 0.302 and &kappa; = 0.252 sit well below any strong-association threshold. The
+      overlap is high because the drug axis flags far more broadly, not because the two measures
+      see the same patients. The stated justification does not carry.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-metamirage" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">MetaMirage</h2>
+      <p class="d-chip">Submitted · DeepMind × Kaggle</p>
+      <div class="d-body"><p class="what">
+      Standard benchmarks measure what a model knows. This one measures whether a model knows
+      when it is about to be wrong. Every task ships as a <strong>matched pair</strong>: a clean
+      variant that is genuinely answerable, and a mirage variant that looks superficially
+      identical but hides a flaw making the confident answer incorrect. Detection is therefore
+      scored against a control rather than against absolute accuracy, which is the design choice
+      that makes the result mean anything.
+    </p>
+    <p class="what">
+      Three quantities per model: trap detection before answering, calibration delta, and
+      correctness. A three-mode rubric separates qualitatively different metacognitive failures
+      instead of collapsing them into one score. The headline correlation and its statistics are
+      in Division one. The artefact that came out of it turns the metric into a deployable
+      training signal, and the benchmark became the empirical foundation for four later projects.
+    </p>
+
+    <figure class="photo">
+      <img src="img/mm_dash.jpg" alt="MetaMirage results dashboard" loading="lazy">
+      <figcaption><b>Benchmark dashboard.</b> Trap detection against accuracy across the seven models, with per-family breakdown. Runs client-side with no server.</figcaption>
+    </figure>
+
+    <p class="src">
+      Submitted to the Google DeepMind and Kaggle benchmark challenge, metacognition track, on
+      16 April 2026. <b>No competition result is on record.</b> The repository is public along
+      with the dataset and a dashboard that runs without a server. 594 commits. This repository
+      is frozen and is not edited.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-temperature" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">When Does One Temperature Suffice?</h2>
+      <p class="d-chip">Under review · IEEE ICASSP 2027</p>
+      <div class="d-body"><p class="what">
+      When is a single scalar temperature the right correction for a model's confidence, and
+      when does the correct correction vary by input in a way one number cannot capture? The
+      paper's object is a <strong>sharpening exponent</strong> treated as a representational
+      mismatch, and its practical claim is that you can tell in advance which groupings of data
+      a single temperature will fail on.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Gaussian-mixture affine-head ratio, predicted against measured</dt><dd>3.46 vs 2.99 &plusmn; 0.10</dd>
+        <dt>Same quantity under a single-exponent model</dt><dd>1.00</dd>
+        <dt>Calibration-error improvement against exponent spread, 7 groupings</dt><dd class="pos">&rho; = +0.964</dd>
+        <dt>Best calibration-error reduction</dt><dd class="pos">54.1%</dd>
+        <dt>Oracle gain recovered by selecting on spread alone</dt><dd class="pos">100%</dd>
+        <dt>Questions per model, two models at 3B and 7.6B parameters</dt><dd>14,042</dd>
+      </dl>
+    </div>
+    <p class="src">
+      <b>Five negative results are reported in the paper itself</b>, not buried: a sign
+      inversion in the signed form of the central quantity, a training-time penalty that turns
+      out to be dominated by ordinary post-hoc temperature scaling, a cross-domain null that is
+      underpowered by construction at four families, and an electromyography arm that is near
+      trivial, 0.866 word error rate against a constant baseline of 0.8955 at p = 0.68. An audit
+      script of 212 checks recomputes every number in the manuscript.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-aegis" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">Aegis wafer</h2>
+      <p class="d-chip">Closed-form law · +19.7%</p>
+      <div class="d-body"><p class="what">
+      On a wafer-scale processor cooled by a single coolant pass, the coolant's own temperature
+      rise sets a ceiling on total compute. The question is whether grading the heat-source power
+      along the flow, rather than spreading it uniformly, buys back usable watts. It does, and
+      the amount is a closed form.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Grading law</dt><dd>G(&beta;) = (1 &minus; e<sup>&minus;&beta;</sup>)(1 + &beta;) / &beta;</dd>
+        <dt>Total power at the wafer-scale reference point, &beta; = 0.572</dt><dd class="pos">16.5 &rarr; 19.7 kW</dd>
+        <dt>Gain at that point</dt><dd class="pos">+19.7%</dd>
+        <dt>Theoretical maximum gain, at &beta; = 1.793</dt><dd class="pos">+29.8%</dd>
+        <dt>Closed form against an independent forward march, 16,000 cells</dt><dd>agrees to 1.3 &times; 10<sup>&minus;5</sup></dd>
+        <dt>Penalty once two-dimensional lateral conduction is solved</dt><dd>&minus;0.72%</dd>
+      </dl>
+    </div>
+    <p class="src">
+      <b>The maximum's location was pre-registered before any numerical work</b>, which is what
+      makes it a prediction rather than a fit. Of the hypotheses registered alongside it, four
+      were supported and <b>three were rejected</b>, including my own lead hypothesis.
+    </p>
+    <div class="correction">
+      <span class="h">My lead hypothesis was wrong, and so was a number I carried for five days</span>
+      I expected lateral heat spreading to set the ceiling. The healing length is
+      <b>3.65 mm</b>, against a reticle edge 7.8 times that and a wafer edge 59 times that, so
+      both relevant scales are large compared with it and lateral extent does not bind. The
+      hypothesis is rejected. A second correction: that healing length was carried at 3.95 mm in
+      error until it was reconciled to 3.647 mm. Two further rejections went the same way, with
+      coolant flow outranking the bonding choice at +38% against +15%, and pump power taking
+      only 2.7 to 5.3% of gross power rather than being the real bound.
+    </div>
+    <div class="note">
+      Two further derived thresholds in this project are deliberately <b>not published here</b>.
+      Its own documents flag them as product rather than physics disclosures, withheld until the
+      competition result is known.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-ascent" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">Ascent</h2>
+      <p class="d-chip">Containment built before capability</p>
+      <div class="d-body"><p class="what">
+      One gate of recursive self-improvement rather than a claim to build a general one. A
+      system can only keep the changes it correctly recognises as good, so the capture fraction
+      is a metacognition term. If the sign-flip generalises, that fraction <em>falls</em> as
+      capability rises and naive self-improvement hits a metacognitive ceiling. The harness is a
+      predict-then-measure loop: a proposer writes a modification, a predictor forecasts its
+      effect <strong>before</strong> any evaluation, and acceptance is by measured gain only.
+      The gap between prediction and outcome is the datum.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Local model ladder, four rungs</dt><dd>0.5B to 7B parameters</dd>
+        <dt>Self-knowledge correlation, bootstrapped 95% intervals</dt><dd class="neg">all cross zero</dd>
+        <dt>Two complete runs agreeing on sign per rung</dt><dd class="neg">no</dd>
+      </dl>
+    </div>
+    <p class="src">
+      <b>The honest headline is that self-knowledge does not reliably beat chance at small
+      scale.</b> Two real bugs had to be fixed before even that could be said. The capability
+      axis was being measured by the same noisy judge that scored the tasks, and it ranked the
+      models non-monotonically, so the first curve was plotted against a scrambled x-axis. An
+      independent exactly-scored 36-item probe with no judge in the loop now ranks the ladder
+      perfectly. Separately the predictor was being handed a parent identifier instead of the
+      parent prompt, so it was forecasting blind at 0.20 direction accuracy; after the fix it
+      called the first large jump at +0.12 predicted against +0.11 actual.
+    </p>
+    <p class="src">
+      <b>The containment stack was built before anything was scaled</b>, which is the part I
+      would defend hardest: a default-deny capability governor wired into the loop so that only
+      prompt rewriting and evaluation are permitted, with network access, shell, self-code
+      modification and self-replication capped and key-gated, two one-way hashed keys that exist
+      on no disk, a dead-man's switch and loss-of-control tripwires. The limitation is written
+      into the repository: this fully cages an effector-less system and does not solve
+      corrigibility for anything stronger.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-landauer" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">Landauer</h2>
+      <p class="d-chip">MLSys 2027 · energy attribution</p>
+      <div class="d-body"><p class="what">
+      Can measured joules be attributed to a single language-model inference request reliably
+      enough to say whether the usual efficiency levers actually work? The central object is a
+      crossover in joules per request against load. <strong>Three results currently cut against
+      the project's own thesis</strong>, and the repository says so in its first paragraph:
+      nothing in it is confirmatory and the directory reserved for pre-registered,
+      guard-passing runs is empty.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Crossover location, one session</dt><dd class="neg">0.5508 [0.4562, 0.6230]</dd>
+        <dt>Crossover location, another session</dt><dd class="neg">0.7722</dd>
+        <dt>A third block landing inside the first interval</dt><dd class="neg">0 of 4 combinations</dd>
+        <dt>Attribution windows containing zero token events</dt><dd class="neg">40,382</dd>
+        <dt>Best validation correlation against ground truth, 24 cells</dt><dd class="neg">0.372, none beating the null</dd>
+        <dt>Ceiling imposed by the reference's own repeatability</dt><dd class="neg">0.3995</dd>
+      </dl>
+    </div>
+    <p class="src">
+      The crossover's <b>direction</b> reproduces across sessions. Its <b>location</b> does not,
+      and the registered attribution policy cannot pass its own guard for a structural reason.
+      The validation gate returned no answer at all, because the reference it was scored against
+      correlates with itself at &minus;0.0035 across repeats. An instrument that disagrees with
+      itself cannot adjudicate anything, and finding that out is the current state of the work.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-sps" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">Structured Perturbation Stability</h2>
+      <p class="d-chip">5 theorems, 2 corollaries</p>
+      <div class="d-body"><p class="what">
+      Standard robustness metrics do not distinguish random noise from transformations that
+      preserve meaning. This framework restricts the measurement: given a network and an
+      admissible family of semantics-preserving transformations, it measures sensitivity
+      <em>only</em> along that family. The question it answers is whether a model ignores what it
+      ought to ignore.
+    </p>
+    <p class="what">
+      The framework is stated formally, with five assumptions, a definition of structured local
+      sensitivity, five theorems and two corollaries, and proofs carried in a separate theory
+      directory alongside the implementation.
+    </p>
+    <div class="note">
+      <b>Why this stays in the research column, stated precisely.</b> The theory is complete and
+      the code runs. There is <b>no executed empirical study</b>: measuring the framework across
+      model families is listed as future work in the repository's own roadmap, and that is the
+      honest gap. A citation block in the repository README formats this manuscript as a journal
+      article with a year attached. <b>It is not published anywhere.</b> That block describes a
+      target the project set itself and never reached, and it should not be read as a
+      publication.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-korean-pim" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">Korean prescribing criteria as a rule engine</h2>
+      <p class="d-chip">Exact-match verified · 401 checks</p>
+      <div class="d-body"><p class="what">
+      Criteria for potentially inappropriate medication in older adults come in two forms:
+      drug-only rules, and condition-dependent rules that need a diagnosis to evaluate. This
+      work turns a national consensus list into a deterministic, machine-readable engine and
+      verifies it against the source article rather than trusting the transcription. The policy
+      finding it produced is in Division one.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Table-one items plus condition rules, unique total</dt><dd>63 + 18 = 102</dd>
+        <dt>Match against the source article, as sets and in order</dt><dd class="pos">exact</dd>
+        <dt>Items mapped to five-level drug classification codes</dt><dd>59 of 63</dd>
+        <dt>Checks in the test command</dt><dd class="pos">401</dd>
+        <dt>Source-agreement checks specifically</dt><dd class="pos">197</dd>
+        <dt>Mapping errors found by sampling nine items against the index</dt><dd class="neg">1</dd>
+      </dl>
+    </div>
+    <p class="src">
+      <b>The limitations are written by the project, not inferred.</b> Nine mapped items were
+      checked by hand against the official index and one was wrong, so the repository states
+      that the remaining fifty may also contain errors and should be treated that way until a
+      full check is done. Word-for-word comparison of the rationale text has not been done. No
+      pharmacist or clinician has reviewed it. It says, in its own documentation, <b>do not use
+      this for clinical decisions.</b> Undecidable cases are recorded as null with a stated
+      reason rather than as zero, and four jurisdictions that cannot be resolved from primary
+      sources are separated out of the sample rather than quietly averaged in.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-arc" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">Localising why interactive agents fail</h2>
+      <p class="d-chip">Bottleneck localised</p>
+      <div class="d-body"><p class="what">
+      A set of hidden interactive games where an agent sees colour frames, gets at most eighty
+      actions, and is scored against human efficiency. The field is at the floor. I did not try
+      to win it; I tried to find out precisely <strong>where</strong> agents break, which is a
+      question a paper can answer and a leaderboard cannot.
+    </p>
+    <ul class="tight">
+      <li>General exploration heuristics clear <b>one level across 25 games</b>, tying random. A
+        structure-aware agent ties as well. Three independent agents at the same floor.</li>
+      <li>A learned forward world model does work: changed-cell accuracy rises from 0 to
+        <b>0.648</b> on seen games.</li>
+      <li><b>It does not transfer.</b> Held out on five unseen games it falls to <b>0.107</b>.
+        Dynamics are game-specific.</li>
+      <li>Online per-game adaptation recovers it. Fine-tuning the global prior on the eighty
+        transitions available during play reaches <b>0.63</b>, against 0.09 frozen and 0.32 from
+        scratch. The prior is essential and the adaptation is data-efficient.</li>
+      <li><b>And planning still ties random.</b> Model-based planning over a good learned model
+        clears the same one level.</li>
+    </ul>
+    <p class="src">
+      <b>Conclusion: goal inference is the binding constraint</b>, not dynamics modelling and not
+      exploration. Generic goal priors tie random singly and as a best-of-five portfolio. The
+      reusable artefact is an offline harness that runs the full agent loop in-process across all
+      25 games with no API key and no internet.
+    </p>
+    <div class="correction">
+      <span class="h">Overselling I had to remove from my own abstract</span>
+      The paper originally described the goal-hypothesis probe as a language-model experiment.
+      It was me, reading rendered frames. The abstract now calls it a human-in-the-loop probe.
+      The reproducible vision-model version is built and released and has not been run.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-harvestguard" style="--c:#FF7A5C" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Hardware</p>
+      <h2 class="d-title">HarvestGuard</h2>
+      <p class="d-chip">8,925-cell thermal model</p>
+      <div class="d-body"><p class="what">
+      A solar-powered cold-storage pod for smallholder produce, paid per crate-day through
+      mobile money, with a signed event ledger underneath it. Roughly three percent of
+      sub-Saharan horticulture has cold-chain access. <strong>The finding that justifies the
+      whole exercise is thermal</strong>: a single-temperature model of this pod approves a
+      setpoint that damages the fruit.
+    </p>
+
+    <figure class="drawing">
+      <svg viewBox="0 0 720 470" role="img" aria-label="Sectional elevation of the HarvestGuard cold storage pod showing crate stack, insulation, equipment bay and the modelled vertical temperature gradient">
+        <!-- solar panel, 8 degree tilt -->
+        <g>
+          <polygon points="196,74 458,56 458,63 196,81" class="d-fill2"/>
+          <line x1="327" y1="70" x2="327" y2="95" class="d-thin"/>
+          <text x="466" y="62" class="d-lbl">450 W STC</text>
+          <text x="466" y="74" class="d-lbl">mono, 8&#176; tilt</text>
+        </g>
+
+        <!-- outer shell -->
+        <rect x="200" y="95" width="255" height="291" class="d-out"/>
+        <!-- insulation band -->
+        <rect x="200" y="95" width="255" height="291" class="d-thin"/>
+        <rect x="215" y="110" width="226" height="261" class="d-thin"/>
+        <!-- hatch the insulation cavity -->
+        <g class="d-thin" opacity=".55">
+          <line x1="200" y1="110" x2="215" y2="95"/><line x1="200" y1="130" x2="215" y2="115"/>
+          <line x1="200" y1="150" x2="215" y2="135"/><line x1="200" y1="170" x2="215" y2="155"/>
+          <line x1="200" y1="190" x2="215" y2="175"/><line x1="200" y1="210" x2="215" y2="195"/>
+          <line x1="200" y1="230" x2="215" y2="215"/><line x1="200" y1="250" x2="215" y2="235"/>
+          <line x1="200" y1="270" x2="215" y2="255"/><line x1="200" y1="290" x2="215" y2="275"/>
+          <line x1="200" y1="310" x2="215" y2="295"/><line x1="200" y1="330" x2="215" y2="315"/>
+          <line x1="200" y1="350" x2="215" y2="335"/><line x1="200" y1="370" x2="215" y2="355"/>
+          <line x1="441" y1="110" x2="456" y2="95"/><line x1="441" y1="130" x2="456" y2="115"/>
+          <line x1="441" y1="150" x2="456" y2="135"/><line x1="441" y1="170" x2="456" y2="155"/>
+          <line x1="441" y1="190" x2="456" y2="175"/><line x1="441" y1="210" x2="456" y2="195"/>
+          <line x1="441" y1="230" x2="456" y2="215"/><line x1="441" y1="250" x2="456" y2="235"/>
+          <line x1="441" y1="270" x2="456" y2="255"/><line x1="441" y1="290" x2="456" y2="275"/>
+          <line x1="441" y1="310" x2="456" y2="295"/><line x1="441" y1="330" x2="456" y2="315"/>
+          <line x1="441" y1="350" x2="456" y2="335"/><line x1="441" y1="370" x2="456" y2="355"/>
+        </g>
+
+        <!-- evaporator coil, top of cold space -->
+        <g>
+          <path d="M224 120 q7 -8 14 0 q7 8 14 0 q7 -8 14 0 q7 8 14 0 q7 -8 14 0 q7 8 14 0 q7 -8 14 0 q7 8 14 0 q7 -8 14 0 q7 8 14 0 q7 -8 14 0 q7 8 14 0"
+                class="d-fill2" fill="none" stroke-width="1.6"/>
+          <text x="224" y="138" class="d-lbl-k">evaporator, R290</text>
+        </g>
+
+        <!-- crate stack: 3 wide x 4 high in section -->
+        <g>
+          <!-- row 1 (top, coldest) -->
+          <rect x="226" y="145" width="62" height="42" class="d-fill2"/>
+          <rect x="298" y="145" width="62" height="42" class="d-fill2"/>
+          <rect x="370" y="145" width="62" height="42" class="d-fill2"/>
+          <!-- row 2 -->
+          <rect x="226" y="195" width="62" height="42" class="d-fill"/>
+          <rect x="298" y="195" width="62" height="42" class="d-fill"/>
+          <rect x="370" y="195" width="62" height="42" class="d-fill"/>
+          <!-- row 3 -->
+          <rect x="226" y="245" width="62" height="42" class="d-fill"/>
+          <rect x="298" y="245" width="62" height="42" class="d-fill"/>
+          <rect x="370" y="245" width="62" height="42" class="d-fill"/>
+          <!-- row 4 (bottom, warmest) -->
+          <rect x="226" y="295" width="62" height="42" class="d-hot"/>
+          <rect x="298" y="295" width="62" height="42" class="d-hot"/>
+          <rect x="370" y="295" width="62" height="42" class="d-hot"/>
+        </g>
+
+        <!-- air channel callout -->
+        <line x1="288" y1="216" x2="298" y2="216" class="d-dim"/>
+        <line x1="293" y1="208" x2="293" y2="224" class="d-dim"/>
+        <text x="256" y="357" class="d-lbl">36 crate positions, 3 wide &#215; 3 deep &#215; 4 high</text>
+
+        <!-- equipment bay -->
+        <line x1="215" y1="345" x2="441" y2="345" class="d-thin"/>
+        <rect x="224" y="352" width="54" height="14" class="d-fill"/>
+        <text x="282" y="362" class="d-lbl">Secop BD80CN</text>
+        <rect x="372" y="352" width="60" height="14" class="d-fill"/>
+        <text x="333" y="376" class="d-lbl">16&#215; EVE LF100LA, 4S4P</text>
+
+        <!-- temperature gradient scale, right -->
+        <g>
+          <text x="500" y="150" class="d-lbl-b">Modelled gradient</text>
+          <text x="500" y="164" class="d-lbl">setpoint 13 &#176;C</text>
+          <line x1="500" y1="176" x2="500" y2="330" class="d-dim"/>
+          <line x1="496" y1="176" x2="504" y2="176" class="d-dim"/>
+          <line x1="496" y1="330" x2="504" y2="330" class="d-dim"/>
+          <text x="510" y="182" class="d-lbl-k">10.85 &#176;C top crate</text>
+          <text x="510" y="196" class="d-lbl">0.85 K above the</text>
+          <text x="510" y="208" class="d-lbl">chilling-injury floor</text>
+          <text x="510" y="258" class="d-lbl-k">2.47 K spread</text>
+          <text x="510" y="272" class="d-lbl">top to bottom</text>
+          <text x="510" y="326" class="d-lbl-k">13.32 &#176;C floor crate</text>
+          <!-- leaders to crates -->
+          <line x1="432" y1="166" x2="500" y2="179" class="d-dim"/>
+          <line x1="432" y1="316" x2="500" y2="327" class="d-dim"/>
+        </g>
+
+        <!-- dimensions -->
+        <g>
+          <line x1="200" y1="406" x2="455" y2="406" class="d-dim"/>
+          <line x1="200" y1="400" x2="200" y2="412" class="d-dim"/>
+          <line x1="455" y1="400" x2="455" y2="412" class="d-dim"/>
+          <text x="297" y="422" class="d-lbl-k">1400 mm</text>
+
+          <line x1="172" y1="95" x2="172" y2="386" class="d-dim"/>
+          <line x1="166" y1="95" x2="178" y2="95" class="d-dim"/>
+          <line x1="166" y1="386" x2="178" y2="386" class="d-dim"/>
+          <text x="96" y="244" class="d-lbl-k">1600 mm</text>
+
+          <line x1="200" y1="440" x2="215" y2="440" class="d-dim"/>
+          <line x1="200" y1="434" x2="200" y2="446" class="d-dim"/>
+          <line x1="215" y1="434" x2="215" y2="446" class="d-dim"/>
+          <text x="222" y="444" class="d-lbl">80 mm polyurethane foam, six sides &middot; envelope UA 2.0 W/K</text>
+        </g>
+
+        <text x="20" y="30" class="d-lbl-b">HarvestGuard pod G1.0 &middot; sectional elevation</text>
+        <text x="20" y="44" class="d-lbl">Simulation output. No physical pod exists.</text>
+      </svg>
+      <figcaption>
+        <b>Sources.</b> Geometry, insulation and crate layout from <code>hardware_spec_ghana.md</code>
+        &sect;4. Compressor from the Secop BD80CN datasheet DES.D.100.R9.02, read 17 Oct 2026:
+        R290, GWP 3, 167 W capacity at 60 W draw, coefficient of performance 2.78 at 2000 rpm.
+        Temperatures from <code>sim/pod_thermal_3d.py</code>, an 8,925-cell finite-volume model.
+        <b>Every figure is a model prediction.</b>
+      </figcaption>
+    </figure>
+
+    <div class="measured">
+      <dl>
+        <dt>Vertical stratification across the crate stack, 13 &#176;C setpoint</dt><dd>2.47 K</dd>
+        <dt>Coldest crate, margin above the chilling-injury floor</dt><dd>0.85 K</dd>
+        <dt>Crates chill-injured at an 11 &#176;C setpoint, which a lumped model approves</dt><dd class="neg">10 of 36</dd>
+        <dt>Crates chill-injured at a 10 &#176;C setpoint</dt><dd class="neg">27 of 36</dd>
+        <dt>No-sun autonomy, February, usable 4.08 kWh</dt><dd>81 h</dd>
+        <dt>Same, after battery ages to 80% retention</dt><dd>69 h</dd>
+        <dt>Ledger service, passing tests</dt><dd class="pos">28</dd>
+      </dl>
+    </div>
+
+    <div class="photo-row">
+      <figure class="photo"><img src="img/hg_iso.jpg" alt="Isometric CAD render of the cold storage pod" loading="lazy"><figcaption><b>Pod, parametric CAD.</b> 1.4 &times; 1.0 &times; 1.6 m, 80 mm foam.</figcaption></figure>
+      <figure class="photo"><img src="img/hg_thermal.jpg" alt="Three dimensional thermal model output" loading="lazy"><figcaption><b>8,925-cell thermal model.</b> The 2.47 K stratification a lumped model cannot see.</figcaption></figure>
+    </div>
+    <p class="src">
+      <b>The finding.</b> A single-temperature model of this pod cannot see the stratification,
+      so it approves 11 &#176;C as more energy-efficient and ten crates of tomatoes take chilling
+      injury while the thermostat reads correctly. The three-dimensional model is the reason the
+      setpoint is 13 &#176;C and not lower. Two modelling bugs were caught on the way: air channels
+      unresolved by a 50 mm grid made the stack behave as one solid block, and circulation air
+      modelled as purely diffusive produced a false warm drift.
+    </p>
+
+
+    <figure class="photo">
+      <img src="img/hg_week.jpg" alt="Hourly energy balance simulation" loading="lazy">
+      <figcaption><b>Worst-week energy balance, Ghana site.</b> The simulation behind the site-transfer result.</figcaption>
+    </figure>
+    <div class="correction">
+      <span class="h">Corrected, and the earlier figure was wrong by a factor of three</span>
+      The bill of materials claimed four EVE LF100 cells giving roughly 70 hours of autonomy.
+      Four cells is 1.28 kWh, which is about 22 hours. The design now carries sixteen cells in
+      a four-series four-parallel arrangement for 5.12 kWh nameplate. Separately, a pod sized
+      for an East African highland baseline runs an energy deficit in <b>all twelve months</b>
+      when moved unchanged to Ho, worst case 442 Wh per day, because Ho has 21% less solar
+      resource and a mean 9.1 K hotter. Eight assumptions were swung independently and none of
+      the eight flips that conclusion. The current costed bill of materials also runs
+      $1,365 at the midpoint against a $1,190 external target, and several required items are
+      still uncosted.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-atsi" style="--c:#FF7A5C" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Hardware</p>
+      <h2 class="d-title">AirTouch Spatial Interface</h2>
+      <p class="d-chip">Patent drafted · 3 errors caught</p>
+      <div class="d-body"><p class="what">
+      The question is whether one signed distance field can govern both what you see and what
+      you feel, so that two pipelines cannot silently drift apart. Where two separate pipelines
+      each own their own geometry, they can disagree about an object and nobody finds out. A
+      shared field makes that class of error impossible by construction. The product spin-out
+      renders a computation rather than an object: a model's uncertainty becomes
+      <strong>firmness</strong>, so a confident model pushes back and an uncertain one yields.
+    </p>
+
+    <div class="note">
+      <b>Array geometry, drive electronics and the patent specification are deliberately not
+      shown here.</b> The specification and its drawing sheets are drafted and unfiled, and
+      publishing an enabling description on a public page is a disclosure that can bar
+      patentability. What follows is the part that is safe to state: three measurement errors
+      this project found in its own work. Academic enquiry is welcome by email.
+    </div>
+
+    <p class="what">
+      The strongest form of the thesis comes from the spin-out rather than the research
+      programme. An abstract referent, a training run or a probability distribution, has no
+      ground truth in the room. Two separate pipelines can therefore disagree about it silently
+      and undetectably, because there is nothing to check them against. A unified field is not
+      merely better here, it is <strong>required</strong>. Measured encoding separation supports
+      it: firmness isolates metric-flat training runs with zero overlap, 0.000 &plusmn; 0.000
+      against 0.443 &plusmn; 0.054.
+    </p>
+
+    <div class="correction">
+      <span class="h">A published sound-pressure figure was overstated by 6.93 dB</span>
+      A feasibility script fed a 12 V peak-to-peak square wave into a formula calibrated for
+      10 V RMS sine, entering peak-to-peak voltage as if it were RMS. The true RMS of that
+      square wave at the 40 kHz fundamental is &radic;2 &middot; 12 / &pi; = 5.40 V, not 12, so
+      the figure that had been cited across four documents fell by 6.93 dB. A separate and
+      higher design point exists at bridge drive, and it is a different configuration rather
+      than a restatement of the old number, which is exactly the confusion the correction note
+      exists to prevent. Both values remain model predictions. <b>No acoustic figure in this
+      project has ever been checked against an instrument.</b>
+    </div>
+
+    <div class="correction">
+      <span class="h">The measurement instrument could never have taken the measurement</span>
+      The microphone specified throughout the procedures document is calibrated for 18 Hz to
+      20 kHz and samples at 48 kHz, which puts its Nyquist limit at 24 kHz, below the 40 kHz
+      carrier it was meant to measure. The entire bench plan was unexecutable as written and
+      nobody would have discovered that until the session itself. A corrected instrument chain
+      is specified and has not yet been run.
+    </div>
+
+    <p class="src">
+      <b>A third instrument was broken, and the code it accused was correct.</b> A trap
+      characteriser reported three of four beads unstable in a multi-element ring. The cause was
+      a slice bug: when the first probed sample came back negative, an empty-slice maximum
+      returned exactly zero and discarded a real 235 nN barrier. Three wrong hypotheses were
+      chased and closed first, including a gradient-descent fix that itself diverged two million
+      kilometres per call, and a root-finder that returned saddle points indistinguishable from
+      wells by residual alone. After the repair, <b>ring configurations from two to eight
+      elements all hold their bead</b>, at 1056 to 1067 nN of capture force at two elements
+      falling to 59 to 99 nN at eight. The originally committed test assertions had been right
+      the whole time. A separate tracking verdict remains void for an unrelated reason: it
+      freezes an equilibrium-deviation measurement at t = 0 while the true deviation drifts to
+      2.2 mm against a 1.072 mm tolerance.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-felt" style="--c:#FF7A5C" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Hardware</p>
+      <h2 class="d-title">FELT</h2>
+      <p class="d-chip">103 tests · SDF pipeline</p>
+      <div class="d-body"><p class="what">
+      A refreshable tactile graphics display driven by the same signed-distance-field
+      mathematics as the acoustic work, aimed at education rather than industry. Commercial
+      devices run $5,000 to $12,000 and the cheaper research units refresh in around thirteen
+      seconds. <strong>The useful output so far is a cost correction that killed the headline
+      price.</strong>
+    </p>
+
+    <figure class="drawing">
+      <svg viewBox="0 0 720 340" role="img" aria-label="Detail of one bistable FELT pin showing solenoid, neodymium latching magnet and pin, with the shift register and MOSFET driver chain beside it">
+        <!-- pin cell detail, left -->
+        <g>
+          <text x="20" y="30" class="d-lbl-b">Bistable pin cell &middot; detail, three of 1,024</text>
+          <text x="20" y="44" class="d-lbl">Design only. No actuator has been bench-tested.</text>
+
+          <!-- faceplate -->
+          <rect x="40" y="86" width="220" height="10" class="d-fill"/>
+          <!-- three pins, middle one raised -->
+          <rect x="74" y="96" width="6" height="34" class="d-fill"/>
+          <rect x="139" y="72" width="6" height="58" class="d-fill2"/>
+          <rect x="204" y="96" width="6" height="34" class="d-fill"/>
+
+          <!-- pitch dimension -->
+          <line x1="77" y1="64" x2="142" y2="64" class="d-dim"/>
+          <line x1="77" y1="58" x2="77" y2="70" class="d-dim"/>
+          <line x1="142" y1="58" x2="142" y2="70" class="d-dim"/>
+          <text x="86" y="56" class="d-lbl-k">2.5 mm</text>
+
+          <!-- solenoid bodies -->
+          <rect x="62" y="130" width="30" height="42" class="d-fill"/>
+          <rect x="127" y="130" width="30" height="42" class="d-fill"/>
+          <rect x="192" y="130" width="30" height="42" class="d-fill"/>
+          <!-- coil hatching -->
+          <g class="d-thin" opacity=".6">
+            <line x1="62" y1="138" x2="92" y2="138"/><line x1="62" y1="148" x2="92" y2="148"/>
+            <line x1="62" y1="158" x2="92" y2="158"/><line x1="62" y1="168" x2="92" y2="168"/>
+            <line x1="127" y1="138" x2="157" y2="138"/><line x1="127" y1="148" x2="157" y2="148"/>
+            <line x1="127" y1="158" x2="157" y2="158"/><line x1="127" y1="168" x2="157" y2="168"/>
+            <line x1="192" y1="138" x2="222" y2="138"/><line x1="192" y1="148" x2="222" y2="148"/>
+            <line x1="192" y1="158" x2="222" y2="158"/><line x1="192" y1="168" x2="222" y2="168"/>
+          </g>
+          <text x="232" y="150" class="d-lbl">5 mm pull-type</text>
+          <text x="232" y="162" class="d-lbl">solenoid, 12 V 0.5 A</text>
+          <text x="232" y="174" class="d-lbl">4 mm stroke</text>
+
+          <!-- latching magnets -->
+          <rect x="70" y="174" width="14" height="6" class="d-hot"/>
+          <rect x="135" y="174" width="14" height="6" class="d-hot"/>
+          <rect x="200" y="174" width="14" height="6" class="d-hot"/>
+          <line x1="149" y1="177" x2="232" y2="196" class="d-dim"/>
+          <text x="236" y="196" class="d-lbl-k">N52 disc, 3 &#215; 1.5 mm</text>
+          <text x="236" y="208" class="d-lbl">holds state at zero power</text>
+        </g>
+
+        <!-- driver chain, right -->
+        <g>
+          <text x="400" y="250" class="d-lbl-b">Driver chain, per channel</text>
+          <!-- MCU -->
+          <rect x="400" y="264" width="54" height="26" class="d-fill"/>
+          <text x="406" y="281" class="d-lbl">ESP32-S3</text>
+          <!-- arrow -->
+          <line x1="454" y1="277" x2="482" y2="277" class="d-dim"/>
+          <polygon points="482,277 475,274 475,280" fill="currentColor" class="d-lbl-k"/>
+          <text x="455" y="270" class="d-lbl">SPI</text>
+          <!-- shift reg -->
+          <rect x="484" y="264" width="66" height="26" class="d-fill"/>
+          <text x="489" y="281" class="d-lbl">TPIC6C596</text>
+          <line x1="550" y1="277" x2="578" y2="277" class="d-dim"/>
+          <polygon points="578,277 571,274 571,280" fill="currentColor" class="d-lbl-k"/>
+          <!-- mosfet -->
+          <rect x="580" y="264" width="54" height="26" class="d-fill"/>
+          <text x="585" y="281" class="d-lbl">IRLZ34N</text>
+          <line x1="634" y1="277" x2="662" y2="277" class="d-dim"/>
+          <polygon points="662,277 655,274 655,280" fill="currentColor" class="d-lbl-k"/>
+          <rect x="664" y="264" width="40" height="26" class="d-fill2"/>
+          <text x="669" y="281" class="d-lbl">coil</text>
+          <text x="400" y="308" class="d-lbl">128 shift registers chained &middot; the register's 150 mA per channel</text>
+          <text x="400" y="320" class="d-lbl">sits below the coil's 500 mA draw, so a MOSFET stage is required</text>
+        </g>
+
+        <!-- array summary -->
+        <g>
+          <text x="400" y="86" class="d-lbl-b">Full array</text>
+          <text x="400" y="104" class="d-lbl">32 &#215; 32 pins</text><text x="620" y="104" class="d-lbl-k">1,024</text>
+          <text x="400" y="120" class="d-lbl">active area</text><text x="620" y="120" class="d-lbl-k">80 &#215; 80 mm</text>
+          <text x="400" y="136" class="d-lbl">shift registers</text><text x="620" y="136" class="d-lbl-k">128</text>
+          <text x="400" y="152" class="d-lbl">full refresh, modelled at 10 MHz SPI</text><text x="620" y="152" class="d-lbl-k">17.70 ms</text>
+          <text x="400" y="168" class="d-lbl">requirement</text><text x="620" y="168" class="d-lbl">&lt; 2 s</text>
+          <text x="400" y="190" class="d-lbl">peak current, one row pulsed</text><text x="620" y="190" class="d-lbl-k">16 A</text>
+          <text x="400" y="206" class="d-lbl">mean draw, under 6% duty</text><text x="620" y="206" class="d-lbl-k">0.9 A</text>
+          <line x1="400" y1="216" x2="704" y2="216" class="d-thin"/>
+        </g>
+      </svg>
+      <figcaption>
+        <b>Sources.</b> Pin geometry, actuator and driver selection from <code>src/hardware/bom.md</code>.
+        Refresh timing from the analytical model in <code>devlogs/2026-07-22.md</code>, which is a
+        calculation and not a bench measurement. The first physical milestone, a single-pin
+        actuator test, is dated 31 October 2026.
+      </figcaption>
+    </figure>
+
+    <div class="measured">
+      <dl>
+        <dt>Software tests passing, signed distance field through pin mask</dt><dd class="pos">103</dd>
+        <dt>Full-array refresh, analytical model</dt><dd>17.70 ms</dd>
+        <dt>Corrected prototype bill of materials, with MOSFET stage</dt><dd class="neg">$838</dd>
+        <dt>Original proposal figure</dt><dd class="neg">$210</dd>
+        <dt>Recommended 8 &#215; 8 pilot instead</dt><dd>$47</dd>
+      </dl>
+    </div>
+
+    <div class="correction">
+      <span class="h">My own proposal was wrong by 32&#215; on drivers and 256&#215; on actuators</span>
+      The proposal budgeted four shift-register drivers and 32 solenoids. Those were per-row and
+      per-column counts mistaken for per-pin counts. A 32 &#215; 32 array needs <b>128 drivers
+      and 1,024 solenoids</b>, which puts the real prototype near $800 rather than $210, and the
+      sub-$500 target does not hold at this resolution. The implementation caught it, not the
+      proposal review. The recommendation now in the repository is to build a 64-pin pilot at
+      about $47 first, because assembling 1,024 pins at 2.5 mm pitch is the real engineering
+      risk and has never been validated at that scale.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-neuroswarm" style="--c:#FF7A5C" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Hardware</p>
+      <h2 class="d-title">NeuroSwarm</h2>
+      <p class="d-chip">0.862 decode · 30/30 closed loop</p>
+      <div class="d-body"><p class="what">
+      The premise is an arithmetic one. The best human brain-computer interface throughput is
+      around 9.5 bits per second; teleoperating a hundred robots needs roughly 192,000. The gap
+      is four orders of magnitude, so direct control is not hard, it is impossible. The operator
+      emits low-bandwidth intent and the swarm fills in per-robot motion.
+      <strong>The October result reverses what I reported in September.</strong>
+    </p>
+
+    <figure class="drawing">
+      <svg viewBox="0 0 720 300" role="img" aria-label="Plan and side elevation of the Node-G ground unit with component callouts">
+        <!-- plan view -->
+        <g>
+          <text x="20" y="30" class="d-lbl-b">Node-G ground unit &middot; plan and elevation</text>
+          <text x="20" y="44" class="d-lbl">Firmware written, never flashed. No unit assembled.</text>
+
+          <circle cx="150" cy="150" r="78" class="d-out"/>
+          <circle cx="150" cy="150" r="70" class="d-hid"/>
+          <line x1="72" y1="150" x2="228" y2="150" class="d-ctr"/>
+          <line x1="150" y1="72" x2="150" y2="228" class="d-ctr"/>
+          <!-- wheels -->
+          <rect x="60" y="128" width="18" height="44" rx="3" class="d-fill"/>
+          <rect x="222" y="128" width="18" height="44" rx="3" class="d-fill"/>
+          <!-- camera, front -->
+          <rect x="138" y="76" width="24" height="12" class="d-fill2"/>
+          <!-- board -->
+          <rect x="116" y="112" width="68" height="34" class="d-fill"/>
+          <text x="122" y="133" class="d-lbl">ESP32-S3</text>
+          <!-- battery -->
+          <rect x="120" y="158" width="60" height="26" class="d-hot"/>
+          <text x="126" y="175" class="d-lbl">1S LiPo</text>
+          <!-- diameter dim -->
+          <line x1="72" y1="252" x2="228" y2="252" class="d-dim"/>
+          <line x1="72" y1="246" x2="72" y2="258" class="d-dim"/>
+          <line x1="228" y1="246" x2="228" y2="258" class="d-dim"/>
+          <text x="118" y="268" class="d-lbl-k">&#8960; 120 mm</text>
+        </g>
+
+        <!-- callouts -->
+        <g>
+          <line x1="162" y1="82" x2="268" y2="70" class="d-dim"/>
+          <text x="272" y="68" class="d-lbl">OV5640 camera</text>
+          <line x1="184" y1="124" x2="268" y2="112" class="d-dim"/>
+          <text x="272" y="110" class="d-lbl">ESP32-S3-WROOM-1 &middot; BMI270 inertial unit</text>
+          <line x1="240" y1="150" x2="268" y2="150" class="d-dim"/>
+          <text x="272" y="148" class="d-lbl">Pololu 100:1 micro metal gearmotor, DRV8833 driver</text>
+          <line x1="180" y1="171" x2="268" y2="186" class="d-dim"/>
+          <text x="272" y="188" class="d-lbl">3.7 V 1200 mAh &middot; 130 to 150 g all up &middot; $85 to $95 per unit</text>
+        </g>
+
+        <!-- decoder comparison bars -->
+        <g>
+          <text x="400" y="222" class="d-lbl-b">Within-subject decode accuracy, Ninapro DB2, eight gestures</text>
+          <text x="400" y="240" class="d-lbl">time-domain features with linear discriminant</text>
+          <rect x="400" y="246" width="215" height="9" class="d-fill2"/>
+          <text x="622" y="254" class="d-lbl-k">0.862</text>
+          <text x="400" y="272" class="d-lbl">convolutional transformer, identical split</text>
+          <rect x="400" y="278" width="158" height="9" class="d-hot"/>
+          <text x="622" y="286" class="d-lbl" fill="currentColor">0.631</text>
+          <line x1="400" y1="294" x2="704" y2="294" class="d-thin"/>
+        </g>
+      </svg>
+      <figcaption>
+        <b>Sources.</b> Unit specification from <code>docs/hardware_system_design.md</code> and
+        <code>docs/v1_build_checklist.md</code>. Decoder comparison from
+        <code>docs/emg_baseline.md</code>, dated 17 Oct 2026, which supersedes the earlier
+        <code>docs/results_v1.md</code> figures on a different held-out split.
+      </figcaption>
+    </figure>
+
+    <div class="measured">
+      <dl>
+        <dt>Shared autonomy clears the task, simulation</dt><dd class="pos">30 of 30</dd>
+        <dt>Shuffled-intent control, which must stay at the floor</dt><dd>0 of 30</dd>
+        <dt>Within-subject decode, classical features, three subjects</dt><dd class="pos">0.862 / 0.818 / 0.834</dd>
+        <dt>Same split, deep decoder</dt><dd class="neg">0.631 / 0.173 / 0.159</dd>
+        <dt>Closed-loop success, classical decoder</dt><dd class="pos">30, 30, 29 of 30</dd>
+        <dt>Cross-subject, no calibration</dt><dd class="neg">0.21 to 0.32</dd>
+        <dt>Real differential-drive dynamics with a 0.5 s majority vote</dt><dd class="pos">9 of 9</dd>
+        <dt>Same, without the vote</dt><dd class="neg">0 of 9</dd>
+      </dl>
+    </div>
+
+    <p class="src">
+      <b>What changed and why it matters.</b> In September I reported that real surface
+      electromyography defeated this system: pooled accuracy 0.245 &plusmn; 0.131, a lone 0.430
+      outlier, and a closed loop that failed. On 17 October a classical baseline, time-domain
+      features into a linear discriminant, reached 0.862 on the same public dataset where the
+      convolutional transformer managed 0.631, and near-chance on two of three subjects. <b>The
+      deep model was the problem, not the signal.</b> The negative result that survives is the
+      one that always mattered: cross-subject decoding without calibration still sits at 0.21 to
+      0.32, so per-user calibration is mandatory and a new wearer gets near-chance performance.
+    </p>
+
+    <div class="correction">
+      <span class="h">Two claims withdrawn</span>
+      A novelty claim on power-connectivity-constrained reconfiguration was carried for six
+      weeks and then refuted by a prior-art search: cooperative power routing through ensembles
+      of sub-millimetre robots was published in 2005. The measurement stands; the novelty does
+      not. Separately, an unverified-input power model claimed a 3 to 6 mm unit survives two
+      hours off the power chain. On real datasheet cell data it survives <b>zero to six
+      minutes</b>, and that claim is withdrawn. A dragged-tether search design also fails
+      outright to the capstan effect, needing on the order of 10<sup>16</sup> newtons at
+      realistic friction.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-neurovoice" style="--c:#FF7A5C" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Hardware</p>
+      <h2 class="d-title">NeuroVoice</h2>
+      <p class="d-chip">928 tests · 28 languages</p>
+      <div class="d-body"><p class="what">
+      Surface electromyography from facial and submental muscles, decoded to text and speech for
+      people who have lost the ability to speak. It is an augmentative communication device and
+      deliberately not called a neuroprosthetic, because it reads muscle activation downstream
+      of motor neurons rather than interfacing with the nervous system.
+    </p>
+    <p class="what">
+      The gap it targets is specific. Existing devices cost $5,000 to $20,000, use eye gaze or
+      single-channel switching, and support English plus a few European languages. No clinically
+      validated device supports Korean, Mandarin, Arabic, Hindi, Bengali or Swahili at
+      production quality. Eight channels feed a convolutional frontend, a four-layer
+      transformer, then a connectionist temporal classification head over 64
+      <strong>articulatory clusters</strong> rather than phonemes, because voicing, place and
+      manner are physically universal while phonemes are language-specific. That choice is what
+      makes one decoder plausibly cross-lingual.
+    </p>
+
+    <div class="measured">
+      <dl>
+        <dt>Target bill of materials, 24-bit biopotential front end</dt><dd>$152</dd>
+        <dt>Design noise floor</dt><dd>1 &#181;V</dd>
+        <dt>Radio path budget</dt><dd>10 ms</dd>
+        <dt>Non-negotiable safety gates in the codebase</dt><dd>6</dd>
+        <dt>Accuracy cost of session-to-session electrode repositioning</dt><dd class="neg">5 to 15 points</dd>
+      </dl>
+    </div>
+
+    <p class="src">
+      <b>Clinical scope, written before the code.</b> Supported: mid-stage amyotrophic lateral
+      sclerosis with preserved facial function, high cervical spinal cord injury, severe
+      dysarthric cerebral palsy, post-laryngectomy. Explicitly excluded: completely locked-in
+      state, stroke aphasia because that is a language disorder rather than a motor one, severe
+      cognitive impairment, paediatric patients, and anyone with an implanted electrical device
+      until electromagnetic compatibility is tested.
+    </p>
+
+    <div class="note">
+      <b>Regulatory status is pre-clinical prototype.</b> The pathway is 510(k) exempt under the
+      relevant classification for communication aids. It is <b>not</b> cleared or approved by any
+      regulator, and describing it that way would be a false claim. Cross-speaker
+      generalisation is unsolved and per-user calibration is mandatory.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-arbiter-core" style="--c:#00B39F" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Ventures</p>
+      <h2 class="d-title">arbiter-core</h2>
+      <p class="d-chip">Ed25519 + hash-chained ledger</p>
+      <div class="d-body"><p class="what">
+      A deterministic decision core: it evaluates a rulebook against a claim's facts, signs the
+      decision with Ed25519, and records it in a hash-chained ledger that anyone can verify
+      offline without trusting the server that issued it. Signing covers a canonical hash; the
+      ledger entry hash covers index, previous hash and decision hash, and chain verification
+      recomputes every link.
+    </p>
+    <div class="principle">
+      <span class="h">The repository's own scope statement, which I would rather quote than paraphrase</span>
+      <p>
+        Tamper-evident, not tamper-proof. Reference vectors are self-generated. The ledger here
+        holds self-test data. There is no external customer data. No accuracy claim. There are
+        no customers and no metrics.
+      </p>
+    </div>
+    <p class="src">
+      <b>Exactly one rulebook is implemented and runs</b>, a healthcare claim-denial
+      prevention set. Other rulebook identifiers are registered but unimplemented and return a
+      clean error rather than a wrong answer. This is a code library with per-domain
+      deployments, not a running unified service, and the README says so.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-signet" style="--c:#00B39F" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Ventures</p>
+      <h2 class="d-title">Signet</h2>
+      <p class="d-chip">511 tests · 0.7 ms median</p>
+      <div class="d-body"><p class="what">
+      An agent calls Signet <strong>before</strong> it moves money, deletes something, deploys
+      or trades. The call returns approve, block or needs-a-human with a risk score and stated
+      reasons, and every verdict is signed and appended to a hash-chained ledger so a receipt
+      re-verifies offline months later.
+    </p>
+    <p class="what">
+      The design point that took longest to get right: <strong>enforcement must not be
+      bypassable.</strong> An agent-invoked tool is bypassable by construction, because the same
+      prompt injection that says "wire the funds" can say "skip the guard". So enforcement lives
+      as a runtime interceptor in front of the tool, and the agent-facing integration is a funnel
+      rather than the control.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Blocked transactions in the evaluation scenario</dt><dd>$182,200</dd>
+        <dt>Caught, with false positives</dt><dd class="pos">10 of 10, zero</dd>
+        <dt>Hash-chained receipts</dt><dd>11</dd>
+        <dt>Median latency, measured</dt><dd>0.7 ms</dd>
+        <dt>Test functions</dt><dd class="pos">511</dd>
+      </dl>
+    </div>
+    <div class="correction">
+      <span class="h">Three numbers that were circulating and are now retired</span>
+      A <b>0.3 ms</b> latency figure was fabricated; the measured figure is 0.7 ms. A
+      <b>$38,000 mis-wire anecdote never happened</b> and must never be cited. A
+      <b>72 out of 100</b> validation score is not in the repository's red-team document and is
+      not a verifiable score; the honest phrasing is that the product was red-teamed across
+      several attack classes and the findings were folded in. Two different demonstration
+      scripts also produce different totals, so the scenario has to be named whenever the dollar
+      figure is quoted.
+    </div>
+    <p class="src">
+      <b>Strategic reversal, July 2026.</b> Signet stopped being pitched standalone. A
+      horizontal framing has a vague buyer and invites the obvious objection that a model vendor
+      could absorb it. It is now the engine underneath a named vertical. That reversal cost
+      nothing technically, because the cryptography and the evaluation methodology were the
+      durable parts.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-caravan" style="--c:#00B39F" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Ventures</p>
+      <h2 class="d-title">Caravan</h2>
+      <p class="d-chip">1,331 tests · 18,253 rulings</p>
+      <div class="d-body"><p class="what">
+      Give it a product description and it returns a defensible customs position: a candidate
+      tariff classification with a cited ruling, a duty stack, certification requirements,
+      origin exposure, and an explicitly flagged sanctions gap. The output is a broker
+      validation packet where every claim carries a citation and a per-row sign-off line,
+      because the person who has to stand behind a classification is a licensed broker, not a
+      model.
+    </p>
+    <p class="what">
+      It began as a keyword lookup over a hand-written catalogue and was rebuilt as a retrieval
+      classifier over <strong>18,253 customs rulings</strong>, with live dated ingestion from the
+      official tariff schedule so a decision can be replayed against the schedule as it stood on
+      a given date. A constrained reranker picks among retrieved candidates <em>by index</em>, so
+      it cannot invent a code that was never retrieved, and degrades to retrieval order on
+      failure.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Six-digit classification accuracy, after a leakage audit</dt><dd>50%</dd>
+        <dt>Ten-digit, after the same audit</dt><dd>44%</dd>
+        <dt>On genuinely novel products</dt><dd class="neg">29% and 23%</dd>
+        <dt>Verbatim train-test contamination the audit found</dt><dd class="neg">20%</dd>
+        <dt>Tests collected, passing, skipped</dt><dd class="pos">1,336 / 1,331 / 5</dd>
+      </dl>
+    </div>
+    <p class="src">
+      <b>Real cryptography, scoped honestly.</b> Ed25519 signing over normalised canonical JSON
+      and a SHA-256 hash-chained ledger whose strict verifier detects sequence gaps, broken
+      links and hash mismatches. Key material is encrypted at rest and production refuses to
+      boot without a stable key source. The security document states what this is <b>not</b>:
+      no public-key infrastructure, no zero-knowledge proofs, no blockchain consensus, no
+      quantum resistance. It is an auditable single-operator decision record and nothing larger.
+      The repository also carries a test that unit-tests its own continuous-integration
+      test-count gate, to stop passed and skipped counts being silently conflated.
+    </p>
+    <div class="note">
+      <b>Scope limits in the repository's own words: a competition prototype, not a production
+      system.</b> Six core lanes are engine-tested. A further 58 sourced lanes are indicative
+      triage and <b>zero of 58 are broker-validated</b>, with every non-core classification
+      carrying a review flag. Denied-party screening runs against a bundled dated sample and
+      <b>not</b> the live lists. Sourcing uses three pre-cached demo suppliers, because no live
+      supplier API connection exists. A live demo is deployed. A take-rate calculation that had
+      been circulating was an order of magnitude wrong and was corrected.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-tollgate" style="--c:#00B39F" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Ventures</p>
+      <h2 class="d-title">Tollgate</h2>
+      <p class="d-chip">205 public conformance vectors</p>
+      <div class="d-body"><p class="what">
+      When an examiner asks an institution to reproduce a compliance decision from eighteen
+      months ago <strong>against the sanctions list as it stood that day</strong>, most stacks
+      cannot do it. They can show what the system says now. Tollgate is the evidence rail that
+      makes the old decision replay, and the measurement that justifies it is in Division one:
+      retraining alone, with the population held constant, makes a system misreport 15.5% of its
+      own past decisions.
+    </p>
+    <p class="what">
+      It was chosen over the horizontal framing for reasons that are about the buyer rather than
+      the technology: a named regulated purchaser, a compliance-mandated pain rather than a
+      nice-to-have, a dated forcing function in recent legislation, an adoption path that needs
+      no licence because it can run in shadow mode alongside the incumbent, and no
+      platform-absorption risk.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Tests</dt><dd class="pos">520</dd>
+        <dt>Public conformance vectors, Apache 2.0</dt><dd class="pos">205</dd>
+      </dl>
+    </div>
+    <div class="note">
+      <b>Honest scope: exact matching works, fuzzy replay does not.</b> This must never be
+      described as production examiner-replayable screening until one fuzzy-match case replays
+      bit-for-bit in continuous integration. The relevant proposed rule does not mandate
+      reproducible evidence, so <b>regulator-required is not a claim I make.</b> Pricing was
+      rewritten after a flow-fee model turned out to have roughly a $3.9M annual ceiling on real
+      payment volume.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-halo" style="--c:#00B39F" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Ventures</p>
+      <h2 class="d-title">HALO, Goldentime and Keel</h2>
+      <p class="d-chip">0.880 macro F1 · 485 tests</p>
+      <div class="d-body"><p class="what">
+      Three products that are stages of one chain: authenticity, then intent, then recovery.
+      <strong>HALO</strong> runs a Korean small language model locally on the phone watching for
+      scam intent, with metacognitive calibration on its own confidence, original content never
+      leaving the device. Its origin is research rather than anecdote: the sign-flip suggested
+      metacognitive blind spots are not unique to models, and HALO tests that in mobile scam
+      defence. <strong>Goldentime</strong> handles the thirty minutes to seventy-two hours after
+      a transfer, the window where money is actually recoverable and almost no tool operates.
+      <strong>Keel</strong> would unify them with an on-device pre-block layer.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>HALO, cloud baseline macro F1, n = 25 synthetic Korean messages</dt><dd>0.880</dd>
+        <dt>Adversarial variants handled in that baseline</dt><dd class="pos">4 of 4</dd>
+        <dt>Latency, median and 95th percentile</dt><dd>899 ms / 1,418 ms</dd>
+        <dt>Goldentime tests passing, skipped, collected</dt><dd class="pos">485 / 13 / 498</dd>
+        <dt>Security findings closed across two hardening rounds</dt><dd class="pos">22</dd>
+      </dl>
+    </div>
+    <div class="note">
+      <b>HALO's on-device result does not exist yet.</b> The only benchmark in the repository is
+      a <b>cloud API baseline</b>. The on-device quantised model benchmark, the calibration
+      pilot and the sub-500 ms end-to-end target are all labelled planned, with no measured
+      results. An Android skeleton exists; the web interface is marked a development tool and
+      not the product. Keel is at the architecture stage with no built app, and its load-bearing
+      risk is an Apple entitlement for URL filtering that was reported rejected for App Store
+      distribution, which the document flags for re-verification before any blocking code gets
+      written.
+    </div>
+    <div class="correction">
+      <span class="h">Goldentime's claims were wrong twice and three were killed outright</span>
+      An impact estimate of <b>19.7 billion won had no arithmetic basis</b> and was deleted; the
+      only surviving figure is a projection of roughly 4.4 billion won per year, and it is
+      labelled a projection. A claimed 5% recovery rate is <b>33.2%</b> by the regulator's own
+      denominator. A claim that no post-incident tools existed is simply false, because an
+      integrated reporting centre and a bank-level block both launched. Payment suspension
+      cannot be automated because no third-party interface exists. Success fees are legally
+      impossible in this domain and are never mentioned. Zero letters of intent, zero pilots,
+      zero user testing with the target elderly population. It reached a presentation round of a
+      financial-technology challenge and <b>did not advance</b>.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-veracity" style="--c:#00B39F" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Ventures</p>
+      <h2 class="d-title">Veracity, AlphaNexus and the concept lane</h2>
+      <p class="d-chip">Regulatory wedge identified</p>
+      <div class="d-body"><p class="what">
+      <strong>Veracity</strong> answers whether audio is real or synthetic, wrapped in the
+      regulatory artefact a bank actually has to file. Selling better detection against an
+      incumbent with fourteen years of data is not a strategy; the wedge is the compliance
+      bundle, because an amended statute makes running a detection system a legal duty with
+      fines attached and the second-tier financial sector is liable without tools.
+    </p>
+    <div class="correction">
+      <span class="h">The blocker is accuracy, and it is disqualifying today</span>
+      Veracity's own integrity check measures a <b>20.8% equal error rate</b> on unseen
+      synthesis attacks. An earlier <b>0.0% on Korean audio was a confounded domain cue</b>, not
+      a result. A sub-one-percent false-positive rate is a survival condition for this product,
+      so it is not launch-ready, and the pitch bills the report rather than the detection.
+    </div>
+    <p class="what">
+      <strong>AlphaNexus</strong> screens an applicant's intellectual-property portfolio across
+      four risk modules, each with a cited academic or regulatory basis, scored 0 to 100 with a
+      data-completeness index and bootstrap intervals. Its scoring spine was ported from an
+      earlier market quantitative engine. It runs offline against fixtures with no key.
+    </p>
+    <div class="note">
+      <b>AlphaNexus's validation is synthetic and the repository says so.</b> Its own honest
+      caveat: the validation set was constructed to have separable signal profiles, so the area
+      under the curve reflects rank-ordering on designed data and <b>not real-world
+      performance</b>. A real system needs calibration against roughly eight thousand actual
+      trial proceedings. No authentication, no rate limiting, no personal-data handling, and the
+      report is informational rather than legal advice. <b>Outcome: rejected</b> from the
+      intellectual-property data competition it was built for, June 2026. Parked in a clean,
+      resumable state rather than abandoned, with its keep-warm schedule deliberately disabled
+      to stop burning free compute.
+    </div>
+    <p class="src">
+      <b>The concept lane.</b> Seven repositories across regulatory automation, insurance
+      claims, healthcare reimbursement and four vertical wedges hold proposals and adversarial
+      reviews rather than shipped systems. Their commit counts are small. They are described as
+      concepts because that is what they are.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-olyak" style="--c:#00B39F" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Ventures</p>
+      <h2 class="d-title">Olyak</h2>
+      <p class="d-chip">102 criteria · no model in the path</p>
+      <div class="d-body"><p class="what">
+      Older adults in Korea routinely collect prescriptions from several hospitals that never
+      see each other's lists. Olyak resolves those prescriptions to ingredients and flags
+      dangerous combinations, duplications and age-inappropriate drugs. The output is a traffic
+      light for a family member, not a prescribing instruction for a doctor, which is a
+      deliberate choice that avoids both medical-device classification and a fight over clinical
+      authority.
+    </p>
+    <p class="what">
+      <strong>No language model touches the determination.</strong> Every judgement is a
+      deterministic rule over a single source data file compiled into the runtime by a build
+      script, and the tests verify the compiled output matches the source on every run. Optical
+      character recognition is an assistive input and never the decision path.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Criteria implemented, unique items under a union definition</dt><dd>102</dd>
+        <dt>Tests passing</dt><dd class="pos">202</dd>
+        <dt>Written specifically to assert false positives do <em>not</em> fire</dt><dd class="pos">31</dd>
+        <dt>Brand-to-ingredient dictionary entries</dt><dd>104</dd>
+      </dl>
+    </div>
+
+    <figure class="photo">
+      <img src="img/ol_app.jpg" alt="Olyak application screens" loading="lazy">
+      <figcaption><b>Olyak interface.</b> Traffic-light determination, the cross-source view, and the brand-to-ingredient step shown as the stated reason for every match.</figcaption>
+    </figure>
+    <p class="src">
+      <b>The fix that mattered most in practice.</b> Prescription envelopes print brand names and
+      the engine only knew ingredient names, so the reader could parse a label perfectly and
+      return zero findings. A brand dictionary, a text matcher and an autocomplete index closed
+      the single largest functional hole, and every match now shows the brand-to-ingredient step
+      as its stated reason.
+    </p>
+    <div class="correction">
+      <span class="h">Two regional competitions, two losses, and the reason is instructive</span>
+      In one question period a judge asked whether it was a consumer product, after a
+      seven-minute pitch that said business-to-business throughout. Everything the judges could
+      <em>see</em> was consumer: the app screens, the leaflet, the framing.
+      <b>Judges believe their eyes over the script.</b> It reached the final presentation round
+      of a fifty-team competition that gave fifteen awards and was not among them, and a second
+      competition also rejected it. A separate correction: a claim that care facilities cannot
+      legally access drug review data is false, because a visiting physician's prescription runs
+      through the same system. The real gap is over-the-counter drugs, supplements and
+      family-supplied medication, and the product now says that instead.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-ganeumja" style="--c:#F5A524" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Civic &amp; Climate</p>
+      <h2 class="d-title">Ganeumja</h2>
+      <p class="d-chip">Ordinance proposed, then executed</p>
+      <div class="d-body"><p class="what">
+      In June 2026, as chair of the Seongnam Youth Council, I proposed a municipal ordinance on
+      reliability verification and citizen impact assessment for administrative artificial
+      intelligence. Ganeumja is <strong>that ordinance executed as code.</strong> Each article
+      maps one-to-one onto a module: pre-deployment calibration to article five, fairness and
+      disclosure to article six, per-case explanation to article eight, the deployment gate to
+      article nine. The ordinance's own statement of reasons cites the sign-flip result, so the
+      research and the legislation are the same argument at two scales.
+    </p>
+    <p class="what">
+      It computes expected and maximum calibration error with small-sample bias correction and
+      bootstrap intervals, per-group error and selection rates with Wilson intervals and
+      multiple-comparison correction, a check that the fairness impossibility identity actually
+      holds in the data, cost-optimal thresholds, and a <strong>cannot-automate
+      determination</strong> when no threshold meets the targets.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Reproduced the published disparity on a real public dataset, n = 6,172</dt><dd class="pos">FPR 0.423 vs 0.220</dd>
+        <dt>Fairness identity held to</dt><dd class="pos">4 decimal places</dd>
+        <dt>Accuracy against mean stated confidence, 2,000 determinations</dt><dd class="neg">81.5% vs 87.2%</dd>
+        <dt>Expected and maximum calibration error</dt><dd>0.057 / 0.598</dd>
+        <dt>Error rate, people in their twenties against people over seventy</dt><dd class="neg">11.7% &rarr; 30.3%</dd>
+        <dt>Unit tests</dt><dd class="pos">48</dd>
+      </dl>
+    </div>
+    <div class="principle">
+      <span class="h">The gate verdict, which is the whole point of the tool</span>
+      <p>
+        There is <b>no confidence threshold</b> that simultaneously reaches 90% accuracy and
+        keeps human referral under 30%, so automated decision-making is not permitted. The tool
+        exists to be able to return that answer rather than a score.
+      </p>
+    </div>
+    <p class="src">
+      <b>Limitations the project states about itself.</b> The real-data validation uses a public
+      criminal-justice dataset whose ground truth is re-arrest rather than reoffending, and
+      re-arrest is a function of policing intensity, so the tool cannot separate how much of a
+      base-rate gap is behaviour and how much is surveillance. Two small subgroups at n = 31 and
+      n = 11 are excluded from analysis, and the documentation names that exclusion as itself a
+      form of bias: a group repeatedly left out of evaluation will never show up as harmed. The
+      municipal determination log is simulated, because real logs are not public, and every
+      document says so. Advanced past the regional preliminary of a national high-school code
+      fair; no further result on record.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-farmpilot" style="--c:#F5A524" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Civic &amp; Climate</p>
+      <h2 class="d-title">FarmPilot and ReField</h2>
+      <p class="d-chip">97.84% validation accuracy</p>
+      <div class="d-body"><p class="what">
+      <strong>FarmPilot</strong> is an on-device crop diagnosis and treatment copilot. The
+      classifier is real: a small mobile architecture trained on a full 38-class plant disease
+      set, 70,295 training and 17,572 validation images, seeded, reaching <strong>97.84%
+      validation accuracy</strong>, with the field-versus-laboratory gap stated in the interface
+      rather than hidden.
+    </p>
+    <p class="what">
+      The product thesis that emerged is better than the one it started with. A farmer cannot
+      photograph every plant, so a phone photo is a <em>targeted probe</em> rather than a census.
+      The interface was rebuilt around that: weather-directed scouting, three sentinel zones, a
+      video row sweep returning a field infection rate and a heat map, and an economic spray
+      decision that recommends treating only the affected zone. That last one reduces
+      agrochemical use, which is the actual environmental claim.
+    </p>
+    <div class="correction">
+      <span class="h">It failed a national contest at the document stage, and the cause was self-inflicted</span>
+      The post-mortem is unambiguous. The project's own strategy note had already
+      reverse-engineered that <b>every winner had a working product</b> and that building a
+      demonstration would take two to three weeks. It was submitted without one. The
+      demonstrable core, diagnosis, is commoditised by a free government app; the novel core,
+      the price layer, was unbuilt. The headline value claim was also shaky, because the price
+      index is wholesale rather than farm-gate and fresh crops cannot delay shipment. The
+      recurring structural blocker across this whole category is that nearly every fitting venue
+      requires a team of at least two.
+    </div>
+    <p class="src">
+      <b>ReField</b> detects idle farmland by change detection on satellite vegetation indices,
+      scores suitability and expected revenue, and matches it with young farmers. Its proposal
+      appendix is real data: <b>62 actual satellite observations</b> pulled through a public
+      catalogue with no authentication, giving a growing-season index of 0.604 with 100% of
+      observations at or above the 0.4 design threshold, against 0.363 off-season with 76% below
+      it. That empirically validates the threshold the design assumes and the fetch script
+      reproduces it. What it still lacks is a confusion matrix, which needs human-labelled
+      aerial photographs and cannot be auto-generated. The document says exactly that.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-synaptic" style="--c:#F5A524" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Civic &amp; Climate</p>
+      <h2 class="d-title">SYNAPTIC</h2>
+      <p class="d-chip">Pre-registered gate, honoured</p>
+      <div class="d-body"><p class="what">
+      A structural simulation of a country's development trajectory from internet, education and
+      energy inputs, with a plain-language explanation layer. Before any output could be
+      published, the project registered a pass condition: hold out six years of the case-study
+      country entirely, estimate on the rest, and pass only if the error and inequality
+      predictions both land inside stated bands.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Mean absolute percentage error, held-out six years</dt><dd class="neg">19.2% against a &lt; 8% threshold</dd>
+        <dt>Inequality coefficient, predicted against observed</dt><dd class="neg">0.366 vs 0.311</dd>
+        <dt>That error against its band</dt><dd class="neg">+0.055 against &plusmn;0.04</dd>
+        <dt>Overall verdict</dt><dd class="neg">FAIL</dd>
+        <dt>Posts built, posts published with a projection</dt><dd>51 / <b>0</b></dd>
+      </dl>
+    </div>
+    <div class="principle">
+      <span class="h">The rule that made the failure worth something</span>
+      <p>
+        If the calibration gate fails, the slot that was going to carry a projection becomes an
+        honest build note about the failure instead. <b>No simulated number is ever posted
+        without passing the gate.</b> All fifty-one pieces were written and none of them carries
+        a projection, because the gate failed by a factor of 2.4 on the primary metric.
+      </p>
+    </div>
+    <p class="src">
+      The mechanism behind the failure is diagnosed rather than hand-waved: the output equation
+      puts a <em>positive</em> coefficient on lagged inequality where the registered hypothesis
+      expected a negative one, and the inequality equation has almost no signal at all, with both
+      coefficients within one standard error of zero. The core simulation endpoints remain
+      stubbed. <b>No projection from this model appears anywhere on this site</b>, and the
+      held-out period is now burned as a test set, so a second version needs a newly
+      pre-registered gate.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-social" style="--c:#F5A524" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Civic &amp; Climate</p>
+      <h2 class="d-title">Dungji, Dodam and RootsLink</h2>
+      <p class="d-chip">Market audit killed 10 ideas</p>
+      <div class="d-body"><p class="what">
+      <strong>Dungji</strong> is an independence copilot for the roughly 2,500 young people who
+      age out of Korean institutional care each year. The useful part was the market check: a
+      saturation audit killed ten adjacent ideas by finding an incumbent for each, and found
+      <strong>zero</strong> AI tools for this population against a real government programme
+      offering human mentors and printed booklets. Submitted to an investment-style competition
+      in May 2026 and did not advance, on the grounds that the audience was narrow and the
+      market slow. That verdict became a general rule I now apply before entering anything:
+      classify the venue type first, because an investment venue and an impact venue reward
+      opposite things.
+    </p>
+    <p class="what">
+      <strong>Dodam</strong> is a three-minute conversational screen for acute youth
+      mental-health risk, using calibration derived from the metacognition work applied to
+      teenage self-report bias, always framed as first-stage screening and never diagnosis.
+      Planning and prompt specification exist. <strong>The twelve-month build does not.</strong>
+      It is listed here as a plan.
+    </p>
+    <p class="what">
+      <strong>RootsLink</strong> matches mentors and opportunities for talent retention in
+      regions losing skilled people, scoring a match as weighted skill-vector similarity plus
+      goal alignment minus a constraint penalty. It is one of the larger codebases in the group
+      and has a public repository.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-nemotron" style="--c:#FF5FA2" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Competitive ML</p>
+      <h2 class="d-title">Nemotron</h2>
+      <p class="d-chip">0.720 · benchmark decoded</p>
+      <div class="d-body"><p class="what">
+      Fine-tune a large mixture-of-experts reasoning model with a rank-limited adapter on
+      inductive rule-discovery puzzles. <strong>The winning move was not architectural, it was
+      decoding the benchmark.</strong> The 9,500-row training set is exactly six puzzle families
+      of roughly 1,580 rows each, so I wrote per-family solvers. Three families solve at 100%
+      against ground truth; the other three derive the rule outright only 38%, 35% and 3% of the
+      time, but the known-answer path always produces the correct boxed answer, so the training
+      set can be rebuilt with fully correct labels at an exact distribution match.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Private and public score</dt><dd>0.720 / 0.708</dd>
+        <dt>Progression against a no-adapter baseline near 0.53</dt><dd class="pos">0.54 &rarr; 0.60 &rarr; 0.72</dd>
+        <dt>Test functions</dt><dd class="pos">449</dd>
+      </dl>
+    </div>
+    <p class="src">
+      <b>The contribution is the ceiling, not the score.</b> 0.80 is not reachable and I can say
+      why rather than guess: one family is only about 40% solvable from the given information and
+      roughly half of another is genuinely ambiguous. Engineering traps are documented, including
+      one adapter target that is a silent no-op and a scoring runtime that may refuse adapters on
+      expert layers, failing to zero without an error.
+    </p>
+    <div class="correction">
+      <span class="h">Two failures, and neither was the model</span>
+      <b>The official deadline was missed.</b> Submissions before it carried no adapter and all
+      errored, so the scored submission is late and unranked, and I do not describe this as a
+      competition placement. Separately, a smoke test that raised on a missing dependency,
+      combined with a retry policy and a detached run, produced a <b>self-restarting training
+      loop that burned compute credit for twelve hours.</b> The fix is in the repository:
+      non-fatal smoke tests, zero retries, and always verify the container list is empty after a
+      run.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-orbit" style="--c:#FF5FA2" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Competitive ML</p>
+      <h2 class="d-title">Orbit Wars</h2>
+      <p class="d-chip">510 → 847.9 on the real ladder</p>
+      <div class="d-body"><p class="what">
+      My first strong agent built an exact in-bot forward simulator validated bit-for-bit
+      against the engine through fifty steps, then scored every candidate move by simulating
+      twelve turns ahead. It beat the previous heuristic 97 to 100% of the time and climbed from
+      510 to 819. <strong>Then nine consecutive ideas lost to it</strong>: active defence 44%,
+      funnelling 5%, opponent modelling 38%, two-ply maximin 10%, greedy sequential selection
+      47%, a deeper horizon 40%, a learned value function 0 to 12%, and a fully executed
+      multi-day reinforcement-learning pipeline at 0%.
+    </p>
+    <div class="principle">
+      <span class="h">The lesson that broke the plateau, and it is the most useful thing in this division</span>
+      <p>
+        Every one of those A/B results was <b>mirror testing against my own agents</b>, which
+        shared my agent's blind spot. The conclusion I had drawn from a month of it, that
+        aggression wins and defence hurts, was an artefact of the test population. I downloaded
+        the real ladder replays instead. My champion's record against real opponents was
+        <b>three wins and eight losses.</b> Every loss was decided by planet count, and in a
+        losing mid-game it deployed only 38% of its ships, 190 of 497, while cheap neutral
+        planets sat unclaimed. The bots beating me kept 40 to 65% of their army in motion
+        continuously. Self-play lied every single time; the real ladder was the only honest
+        signal.
+      </p>
+    </div>
+    <p class="src">
+      <b>And the fix taught something precise.</b> Bolting an expansion pass onto the agent
+      scored <em>worse</em>, 618 with boom-or-bust behaviour, and a tamed version 747, both below
+      the original. The reason is exact: an expansion pass can only add the moves the rollout
+      deliberately <em>rejected</em>. Smarter expansion had to come from inside the search.
+      Deepening the horizon produced the first variant to beat it on the real ladder at 828, and
+      widening the candidate set from 44 to 64 produced the project champion at <b>847.9</b>. The
+      ladder leader sits near 1800, so this is mid-table and not a placement.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-debris" style="--c:#FF5FA2" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Competitive ML</p>
+      <h2 class="d-title">Neural Debris</h2>
+      <p class="d-chip">379 → 237 · ceiling proved</p>
+      <div class="d-body"><p class="what">
+      An orbital-debris streak detector had been poisoned and the task was to make its outputs
+      match a hidden clean model. The organisers' framework would not build on this machine, so I
+      reimplemented the detector in pure PyTorch and reproduced the reference submission
+      <strong>to six significant figures</strong>, recovering the anchor geometry analytically.
+    </p>
+    <div class="measured">
+      <dl>
+        <dt>Backdoor separability, seven signal families plus deep features</dt><dd class="neg">AUC 0.565, p = 0.21</dd>
+        <dt>Doing nothing</dt><dd>379.05</dd>
+        <dt>Best submitted, lower is better</dt><dd class="pos">237.41</dd>
+        <dt>A pure confidence cut at the same detection count</dt><dd>266.0</dd>
+        <dt>Public leader</dt><dd>157.06</dd>
+      </dl>
+    </div>
+    <p class="src">
+      <b>The backdoor is clean-label stealthy and I proved filtering is futile rather than
+      assuming it.</b> Once the confidence confound is removed, poisoned detections are
+      indistinguishable from real streaks, with a probe scoring below chance. So detection-level
+      filtering cannot work in principle and only weight-level intervention can. Reading the
+      public write-ups then showed the leaderboard tiers exactly: doing nothing is 379,
+      submitting an empty file scores 284 because the false-positive penalty is so high,
+      <b>226 to 233 is the ceiling of any post-hoc filtering</b>, and 145 to 150 requires
+      fine-tuning. My submission sits at the top of the filtering tier.
+      <b>The real blocker was environmental</b>, not conceptual: the framework would not build
+      locally, so I could only build a filter, and a filter is capped.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-dispatch" style="--c:#3B82F6" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Method</p>
+      <h2 class="d-title">Dispatch and external memory</h2>
+      <p class="d-chip">11-specialist review</p>
+      <div class="d-body"><p class="what">
+      Any non-trivial task routes through role specialists before implementation: a researcher
+      for external facts, an architect for structure, an implementer, a reviewer for correctness
+      and security, and a quantitative specialist for statistics. Independent agents run in
+      parallel and their outputs get <strong>synthesised</strong> into one answer rather than
+      concatenated, with conflicts resolved rather than averaged.
+    </p>
+    <p class="what">
+      Shared state lives in files rather than conversation: active work, session handoffs, bugs,
+      decisions and dated checkpoints. Tasks move through a status ladder under an optimistic
+      locking protocol with exactly one owner at a time, a lock expiry so abandoned work can be
+      reclaimed, a re-check before writing so a race aborts and retries, and an append-only audit
+      trail. <strong>The reason is capacity, not elegance.</strong> Scaling by decomposition and
+      external memory works; scaling by asking for a bigger context window does not.
+    </p>
+    <p class="src">
+      <b>Where it was worth the most.</b> A hardware and ethics review for the swarm work ran
+      eleven specialists including a feasibility and ethics red team, and its most valuable
+      output was <em>deletion</em>: it ruled magnetic levitation impossible by Earnshaw's
+      theorem, ruled a holographic display fantasy, put film-style dense reconfiguration at ten
+      years or more, and wrote an explicit must-not-build list covering weaponisation and covert
+      surveillance.
+    </p>
+    <div class="correction">
+      <span class="h">Where it failed, and how I caught it</span>
+      An agent workflow once <b>hallucinated an entire eligibility ruleset</b> for a grant
+      programme, inventing incorporation, director-age and shareholder requirements that the
+      official criteria flatly contradicted. It was caught by reading the primary source. Agents
+      also stall on certain work: symbolic mathematics verification stalled twice, so the hardest
+      question sets in one project were authored by hand and verified numerically instead. The
+      standing rule that came out of this is the one that shaped this entire portfolio.
+      <b>An agent's output is evidence, not a fact</b>, and an external claim goes to the primary
+      source before it goes into a document.
+    </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-tools" style="--c:#3B82F6" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Method</p>
+      <h2 class="d-title">Personal systems</h2>
+      <p class="d-chip">Quality gates that found real defects</p>
+      <div class="d-body"><p class="what">
+      An adaptive test trainer built as a vanilla JavaScript application with no framework and
+      no backend, reproducing a real testing interface: module-adaptive routing, real section
+      timing, an embedded graphing calculator, and annotation tools. Every multiple-choice item
+      carries a per-choice rationale explaining why each option is right or wrong.
+    </p>
+    <p class="src">
+      <b>The interesting engineering is the quality gates, which found real defects in my own
+      content.</b> A shape linter checks whether the correct answer can be picked without
+      reading the question, failing the bank if correct answers run long or if any answer letter
+      falls outside a balanced band. A pattern analyser found that 62% of answers in one
+      sub-bank were nine letters or longer, the <em>opposite</em> of the pattern in a real
+      released form, and a corrective set moved that share to 42%. A taxonomy audit mapped every
+      item onto the published 30-skill framework and found one domain occupying 35% of a section
+      while four of its five skills held under 25 items each. Separately, 213 items had no
+      per-choice rationale at all, and back-filling them exposed a second defect: rationales
+      referring to numbered choices had gone stale against a shuffle, matching neither
+      zero-based nor one-based numbering. They were rewritten to be position-free.
+    </p>
+    <p class="src">
+      A scheduling stack writes to a single store that an always-on-top widget renders live, so a
+      deadline added from any terminal session in any repository appears on screen within about a
+      second. It currently tracks <b>179 tasks across 17 projects.</b> Unglamorous, and it is the
+      thing that keeps the rest of this portfolio from colliding with itself.
+    </p></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-how-to-read" style="--c:#3B82F6" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Method</p>
+      <h2 class="d-title">How to read every number here</h2>
+      <p class="d-chip">Practice</p>
+      <div class="d-body"><div class="glance">
+    <div><span class="n">46</span><span class="k">repositories authored, excluding forks</span></div>
+    <div><span class="n">~6,100</span><span class="k">commits across them</span></div>
+    <div><span class="n">~220k</span><span class="k">lines of Python, 17 largest repos</span></div>
+    <div><span class="n">3</span><span class="k">papers formally submitted</span></div>
+    <div><span class="n">4</span><span class="k">further papers in draft or research</span></div>
+    <div><span class="n">7 mo</span><span class="k">March to October 2026</span></div>
+  </div>
+  <p class="src">
+    <b>Counting method.</b> Line counts are <code>wc -l</code> over source files, excluding
+    virtual environments, vendored data and dependency trees. Commit totals come from the GitHub
+    contributors API. These were counted on <b>6 September 2026</b> and are not re-measured
+    here, so treat them as a floor rather than a current figure. None of them is a quality
+    measure. They are size measures, and they are stated so that nothing further down has to be
+    taken on trust.
+  </p>
+
+  <h4 class="sub">How to read every number on this site</h4>
+  <div class="principle">
+    <span class="h">A result that cannot be reproduced by one command is not a result yet.</span>
+    <p>
+      Where a figure appears here, there is a script in the relevant repository that recomputes
+      it, and if the script and the document disagree, the document is wrong. Four things follow
+      from that rule and they are the reason this portfolio is shaped the way it is.
+    </p>
+  </div>
+
+  <ul class="tight">
+    <li><b>Append-only devlogs and failure logs.</b> Each repository carries
+      <code>devlogs/</code> and <code>failures/</code> directories whose past entries are never
+      edited, so a project's history includes the days the hypothesis was wrong. That is the part
+      usually deleted.</li>
+    <li><b>Leakage audits before celebration.</b> Any classifier result gets a contamination
+      check before it reaches a document. One classifier's reported accuracy fell from 55% and
+      50% to 50% and 44% when an audit found 20% verbatim train-test overlap, and to 29% and 23%
+      on genuinely novel inputs. Those lower numbers are the ones quoted.</li>
+    <li><b>Negative controls that must stay negative.</b> In the swarm work every new behaviour
+      has to be goal-free, because a goal-anchored behaviour lets the shuffled-intent control
+      succeed by accident. That rule was learned by watching a control rise from 0.00 to 0.87 and
+      having to reject two working implementations.</li>
+    <li><b>Modelled is never called measured.</b> Five hardware projects appear here and none of
+      them has been built. Every figure attached to them is a model prediction and is labelled
+      as one.</li>
+  </ul>
+
+  <h4 class="sub">Three results I would defend anywhere</h4>
+
+  
+
+  
+
+  
+
+  <div class="note">
+    <b>What this portfolio is not.</b> It is not a claim of commercial traction. These projects
+    have <b>zero paying customers</b> between them and zero signed pilots. Several entered
+    competitions and lost, and those outcomes are in Division six and Division eight rather than
+    omitted. Several results listed in September have since been corrected or improved, and the
+    corrections are shown next to the originals. Where a figure is modelled rather than
+    measured, it says so on the line.
+  </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-papers" style="--c:#7C4DFF" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Research</p>
+      <h2 class="d-title">Papers and their real status</h2>
+      <p class="d-chip">Practice</p>
+      <div class="d-body"><div class="tbl-scroll">
+    <table>
+      <caption class="src" style="caption-side:bottom;text-align:left;padding:10px 13px;">
+        Papers and their real status, as of 19 October 2026. Three are formally submitted, one
+        is drafted and unsubmitted, and three are in active pre-submission research.
+      </caption>
+      <thead>
+        <tr><th>Manuscript</th><th>Field</th><th>Venue</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>When Does One Temperature Suffice?</b></td><td>Calibration theory</td><td>IEEE ICASSP 2027</td><td class="out-open">Under review, decision 13 Jan 2027</td></tr>
+        <tr><td><b>Korean PIM criteria as a rule engine</b></td><td>Medical informatics</td><td>National informatics society, autumn meeting</td><td class="out-open">Submitted, accession 26F-0161</td></tr>
+        <tr><td><b>Aegis wafer, the grading law G(&beta;)</b></td><td>Semiconductor thermal design</td><td>Samsung Humantech, 33rd, high-school division</td><td class="out-open">Abstract stage, result not announced</td></tr>
+        <tr><td><b>Limits of unlearning a clean-label backdoor</b></td><td>Machine-learning security</td><td>WIPE-OUT 2 at ECML PKDD 2026</td><td class="out-lost">Draft, not submitted</td></tr>
+        <tr><td><b>Landauer, per-request inference energy</b></td><td>Systems and efficiency</td><td>MLSys 2027, deadline 30 Oct 2026</td><td class="out-lost">Draft, nothing confirmatory yet</td></tr>
+        <tr><td><b>Structured Perturbation Stability</b></td><td>Transformer robustness</td><td>Not submitted</td><td class="out-lost">Unpublished manuscript</td></tr>
+        <tr><td><b>ARC-AGI-3 ablation</b></td><td>Interactive reasoning agents</td><td>Competition paper track</td><td class="out-lost">Drafted, not submitted</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MetaMirage -->
+  
+
+  <!-- Temperature / ICASSP -->
+  
+
+  <!-- Aegis -->
+  
+
+  <!-- Ascent -->
+  
+
+  <!-- Landauer -->
+  
+
+  <!-- SPS -->
+  
+
+  <!-- korean-pim -->
+  
+
+  <!-- ARC --></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-arbiter" style="--c:#00B39F" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Ventures</p>
+      <h2 class="d-title">Arbiter, the company</h2>
+      <p class="d-chip">Practice</p>
+      <div class="d-body"><div class="note">
+    <b>Standing entity facts, stated before anything else.</b> 아비터 (Arbiter) is a registered
+    Korean sole proprietorship, registration 414-01-72904, opened 25 June 2026. There is no legal
+    entity outside Korea. The founder is a minor, so a minor's contract is voidable and an adult
+    signatory is a real gate on several of these. <b>None of these products has revenue, a
+    customer, or a signed pilot.</b> The cryptography is real and the demand is unproven, and
+    those are two different claims.
+  </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-record" style="--c:#FF5FA2" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Competitive ML</p>
+      <h2 class="d-title">Submissions and record</h2>
+      <p class="d-chip">Practice</p>
+      <div class="d-body"><div class="tbl-scroll">
+    <table>
+      <thead>
+        <tr><th>Project</th><th>Venue</th><th>Date</th><th>Outcome</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>MetaMirage</b></td><td>DeepMind and Kaggle benchmark challenge, metacognition track</td><td class="m">Apr 2026</td><td class="out-open">Submitted, no result on record</td></tr>
+        <tr><td><b>HALO</b></td><td>National AI champion competition</td><td class="m">Apr 2026</td><td class="out-lost">Deadline missed, not submitted</td></tr>
+        <tr><td><b>Dungji</b></td><td>Investment-style startup competition</td><td class="m">May 2026</td><td class="out-lost">Did not advance past round one</td></tr>
+        <tr><td><b>FarmPilot</b></td><td>National agrifood startup contest</td><td class="m">Jun 2026</td><td class="out-lost">Failed the document cut</td></tr>
+        <tr><td><b>AlphaNexus</b></td><td>Intellectual-property data competition</td><td class="m">Jun 2026</td><td class="out-lost">Rejected at the document stage</td></tr>
+        <tr><td><b>Orbit Wars</b></td><td>Kaggle, continuous-space strategy ladder</td><td class="m">Jun 2026</td><td class="out-open">Completed, mid-table</td></tr>
+        <tr><td><b>Goldentime</b></td><td>Financial-technology challenge, finance track</td><td class="m">Jul 2026</td><td class="out-lost">Eliminated at the regional preliminary</td></tr>
+        <tr><td><b>HALO</b></td><td>Accelerator cohort</td><td class="m">Jul 2026</td><td class="out-lost">Rejected before the full application stage</td></tr>
+        <tr><td><b>Neural Debris</b></td><td>Space-agency Kaggle de-poisoning task</td><td class="m">Jul 2026</td><td class="out-open">Completed, mid-pack</td></tr>
+        <tr><td><b>Olyak</b></td><td>Regional startup idea competition, 50 teams and 15 awards</td><td class="m">2026</td><td class="out-lost">Reached the final presentation, not awarded</td></tr>
+        <tr><td><b>Olyak</b></td><td>Second regional startup competition</td><td class="m">Aug 2026</td><td class="out-lost">Not selected</td></tr>
+        <tr><td><b>Ganeumja</b></td><td>National high-school code fair hackathon</td><td class="m">Aug 2026</td><td class="out-won">Advanced past the regional preliminary</td></tr>
+        <tr><td><b>Nemotron</b></td><td>Reasoning fine-tuning challenge</td><td class="m">2026</td><td class="out-lost">Deadline missed, submission late and unranked</td></tr>
+        <tr><td><b>korean-pim</b></td><td>National medical informatics society, autumn meeting</td><td class="m">Sep 2026</td><td class="out-open">Submitted, accession issued</td></tr>
+        <tr><td><b>Aegis wafer</b></td><td>Corporate paper award, 33rd, high-school division</td><td class="m">Sep 2026</td><td class="out-open">Abstract stage, result not announced</td></tr>
+        <tr><td><b>Temperature paper</b></td><td>IEEE signal-processing conference 2027</td><td class="m">Sep 2026</td><td class="out-open">Under review, decision Jan 2027</td></tr>
+        <tr><td><b>Caravan</b></td><td>Marketplace pitch competition, student track</td><td class="m">Oct 2026</td><td class="out-open">Submitted, judging in progress</td></tr>
+        <tr><td><b>FELT</b></td><td>72nd national science exhibition, general division</td><td class="m">Aug 2026</td><td class="out-lost">Did not place</td></tr>
+        <tr><td><b>Goldentime</b></td><td>Smart-city expo awards</td><td class="m">Aug 2026</td><td class="out-lost">Not selected</td></tr>
+        <tr><td><b>Goldentime</b></td><td>Regional startup investment challenge, final round</td><td class="m">Oct 2026</td><td class="out-lost">Did not place</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="src">
+    <b>One row is still open and the rest are settled.</b> The pitch competition's submission
+    deadline was 16 October 2026, so no entrant has a result yet. Everything else has been
+    decided. Nothing here is omitted for looking bad, and nothing is upgraded by silence.
+  </p>
+
+  <div class="note">
+    <b>The structural cause of most of these losses, named once.</b> In at least four of them the
+    post-mortem found the same thing: an <b>idea-stage or research-stage submission sent to a
+    screen that funds traction.</b> The work was real and the venue was wrong. The rule that came
+    out of it is to classify the venue type before entering, because an investment venue and an
+    impact venue reward opposite things, and a research venue rewards neither.
+  </div>
+
+  <h4 class="sub">The three with public scoreboards</h4></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article>
+    <article class="detail" id="p-verification" style="--c:#3B82F6" hidden>
+      <button class="back" type="button">&larr; All work</button>
+      <p class="d-cat">Method</p>
+      <h2 class="d-title">How I verify my own numbers</h2>
+      <p class="d-chip">Practice</p>
+      <div class="d-body"><h4 class="sub">Results retracted after measuring them properly</h4>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>Project</th><th>What the retraction was</th></tr></thead>
+      <tbody>
+        <tr><td><b>Caravan</b></td><td>Classifier accuracy fell from 55% and 50% to 50% and 44% after a leakage audit found 20% verbatim train-test overlap. The novel-product figures, 29% and 23%, are the ones that matter and they are much lower.</td></tr>
+        <tr><td><b>Adaptive risk</b></td><td>An apparent finding that credit models rank fraud invertedly did not survive. 536 of the 730 accounts in that fraud proxy had a median peak balance of <b>zero</b>. They were dormant cards, not fraud, and no model can rank them. Requiring a real drawdown removed them and removed the effect. Three cuts of that experiment were run and two looked better than the truth.</td></tr>
+        <tr><td><b>Signet</b></td><td>A 0.3 ms median latency was fabricated; the measured figure is 0.7 ms. A $38,000 mis-wire anecdote never happened. A 72 out of 100 validation score is not in the repository and is not citable.</td></tr>
+        <tr><td><b>Veracity</b></td><td>A 0.0% equal error rate on Korean audio was a confounded domain cue. The honest number on unseen synthesis attacks is 20.8%, which is not launch-ready.</td></tr>
+        <tr><td><b>Goldentime</b></td><td>An impact figure of 19.7 billion won had no arithmetic basis and was deleted. A claimed 5% recovery rate is 33.2% by the regulator's own denominator. A claim that no post-incident tools existed was false.</td></tr>
+        <tr><td><b>HarvestGuard</b></td><td>Seven cost, payback and impact figures were retired as wrong, including a claim of price parity with the nearest operator when the real ratio is three to seven times more expensive per kilogram-day. A battery autonomy figure was wrong by a factor of three.</td></tr>
+        <tr><td><b>AirTouch</b></td><td>A published sound-pressure figure was overstated by 6.93 dB by a peak-to-peak against RMS voltage error, after being cited across four documents. The instrument specified to check it could not reach the frequency it was meant to measure.</td></tr>
+        <tr><td><b>FELT</b></td><td>My own proposal was wrong by 32&times; on driver count and 256&times; on actuator count, which moved a sub-$500 target to roughly $800.</td></tr>
+        <tr><td><b>Aegis wafer</b></td><td>A healing length was carried at 3.95 mm for five days before being reconciled to 3.647 mm.</td></tr>
+        <tr><td><b>ARC-AGI-3</b></td><td>A "language model as goal hypothesiser" experiment in the paper was actually me reading rendered frames. The abstract now says human-in-the-loop probe.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 class="sub">Hypotheses that were falsified, including my own</h4>
+  <ul class="tight">
+    <li><b>The prescribing-criteria hypothesis.</b> I believed one national payer had uniquely
+      removed condition-dependent criteria. Six jurisdictions of primary sources refuted it. The
+      replacement finding, an attrition gradient tracking proximity to payment, is stronger than
+      what I set out to prove.</li>
+    <li><b>The metacognition pre-registration.</b> The registered hypothesis was falsified in the
+      opposite direction from the one predicted. That reversal is now the headline result.</li>
+    <li><b>The swarm novelty claim.</b> I carried a claimed novelty seam on
+      power-connectivity-constrained reconfiguration for six weeks. A prior-art search refuted
+      it: cooperative power routing through ensembles of sub-millimetre robots was published in
+      2005. The measurement stands. <b>The novelty claim is dead and the document says so.</b></li>
+    <li><b>The wafer-scale lead hypothesis.</b> I expected lateral heat spreading to set the
+      thermal ceiling. It does not, and the hypothesis is rejected in the project's own
+      registration document alongside two others.</li>
+    <li><b>My own power prediction.</b> I asserted that a hub would feed more large units than
+      small ones. The model showed the opposite by a factor of eight, for a reason I had not
+      considered: draw falls as the cube of size while hop resistance rises only as its inverse.</li>
+    <li><b>The development simulation.</b> Its pre-registered calibration gate failed by a factor
+      of 2.4, so none of fifty-one planned pieces carries a projection.</li>
+  </ul>
+
+  <h4 class="sub">Dead ends, with the cost written down</h4>
+  <ul class="tight">
+    <li><b>Nine losing agents in one strategy competition.</b> Active defence, funnelling,
+      opponent modelling, two-ply maximin, greedy sequential selection, a deeper horizon, a
+      supervised value function, a full reinforcement-learning pipeline and a policy-rollout
+      continuation. All lost. The reinforcement-learning attempt alone was a committed multi-day
+      build.</li>
+    <li><b>A month of self-play testing that lied.</b> Every A/B result in that project was
+      mirror testing against agents sharing the same flaw, so the strategic conclusion drawn from
+      it was an artefact. Real ladder replays contradicted it immediately.</li>
+    <li><b>A twelve-hour compute leak.</b> A smoke test that raised on a missing dependency,
+      combined with a retry policy and a detached run, produced a self-restarting training loop
+      that burned credit overnight.</li>
+    <li><b>Two missed deadlines.</b> One competition entry was never submitted and another was
+      submitted late and unranked. Both are in the table in Division six rather than omitted
+      from it.</li>
+    <li><b>Three wrong hypotheses chased before finding one slice bug</b>, including a fix that
+      itself diverged two million kilometres per call, while the code being accused was correct
+      the whole time.</li>
+  </ul>
+
+  <div class="principle">
+    <span class="h">What this division is for</span>
+    <p>
+      Every number in the preceding seven divisions could have been the pre-audit version. In
+      ten cases it was, until something got checked that did not have to be checked. The value of
+      a portfolio is not the size of its best claim. It is the <b>size of the gap between its
+      claims and what it can reproduce</b>, and the only way to show that gap is small is to show
+      where it was once large.
+    </p>
+  </div></div>
+      <nav class="d-nav"><button class="back wide" type="button">&larr; Back to all work</button></nav>
+    </article></div>
+
+  <footer class="foot">
+    <p><b>Dayeon Kang</b> &middot; <a href="mailto:dayeon603@gmail.com">dayeon603@gmail.com</a>
+      &middot; <a href="https://github.com/dayeon603-pixel">github.com/dayeon603-pixel</a>
+      &middot; <a href="https://orcid.org/0009-0006-4481-0277">ORCID 0009-0006-4481-0277</a></p>
+    <p>Compiled October 2026 from repository sources. Most repositories are private, several
+      because they hold unfiled patent drafts; scripts and run records are available on request.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var home = document.getElementById('home');
+  var details = document.getElementById('details');
+  var panels = [].slice.call(details.querySelectorAll('.detail'));
+  var cards = [].slice.call(document.querySelectorAll('.card'));
+  var feats = [].slice.call(document.querySelectorAll('.feat'));
+  var filts = [].slice.call(document.querySelectorAll('.filt'));
+
+  function showHome(){
+    panels.forEach(function(p){ p.hidden = true; });
+    home.hidden = false;
+    document.title = 'Dayeon Kang';
+  }
+  function showPanel(slug){
+    var hit = null;
+    panels.forEach(function(p){
+      var on = p.id === 'p-' + slug;
+      p.hidden = !on;
+      if (on) hit = p;
+    });
+    if (!hit) return false;
+    home.hidden = true;
+    var t = hit.querySelector('.d-title');
+    if (t) document.title = t.textContent + ' · Dayeon Kang';
+    return true;
+  }
+  function route(jump){
+    var m = /^#\/p\/([\w-]+)$/.exec(location.hash || '');
+    if (m && showPanel(m[1])) {
+      if (jump) window.scrollTo(0, 0);
+      return;
+    }
+    var wasDetail = home.hidden;
+    showHome();
+    if (jump && wasDetail) {
+      var back = sessionStorage.getItem('pf-scroll');
+      window.scrollTo(0, back ? parseInt(back, 10) || 0 : 0);
+    }
+  }
+
+  cards.concat(feats).forEach(function(b){
+    b.addEventListener('click', function(){
+      try { sessionStorage.setItem('pf-scroll', String(window.pageYOffset)); } catch (e) {}
+      location.hash = '#/p/' + b.dataset.slug;
+    });
+  });
+  details.addEventListener('click', function(e){
+    if (e.target.classList && e.target.classList.contains('back')) {
+      if (location.hash && location.hash.indexOf('#/p/') === 0) history.back();
+      else location.hash = '';
+    }
+  });
+  document.getElementById('brand').addEventListener('click', function(){
+    location.hash = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  [].slice.call(document.querySelectorAll('.bar nav a')).forEach(function(a){
+    a.addEventListener('click', function(){
+      if (home.hidden) { location.hash = ''; }
+    });
+  });
+
+  filts.forEach(function(f){
+    f.addEventListener('click', function(){
+      filts.forEach(function(x){ x.classList.remove('on'); });
+      f.classList.add('on');
+      var want = f.dataset.f;
+      cards.forEach(function(c){ c.hidden = !(want === 'all' || c.dataset.cat === want); });
+      try { localStorage.setItem('pf-filter', want); } catch (err) {}
+    });
+  });
+  try {
+    var saved = localStorage.getItem('pf-filter');
+    if (saved && saved !== 'all') {
+      var f = filts.filter(function(x){ return x.dataset.f === saved; })[0];
+      if (f) f.click();
+    }
+  } catch (err) {}
+
+  window.addEventListener('hashchange', function(){ route(true); });
+  route(false);
+})();
+</script>
