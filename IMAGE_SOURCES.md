@@ -9,7 +9,8 @@ All images are Dayeon Kang's own work. No stock images. Charts in the page are g
 | icassp_spread.jpg | Figure 6 of the paper submitted to ICASSP 2027 |
 | hg_thermal.jpg | harvestguard-models, sim/out/pod_thermal_3d.png |
 | hg_week.jpg | harvestguard-models, sim/out/ho_worst_week.png |
-| ns_hand.jpg, ns_shape.jpg | neuroswarm-results public page, embedded figures |
+| ns_goal_hand.jpg | ventures/neuroswarm/docs/goal/open_hand.jpg, my own Blender render, docs/goal/render.py |
+| ns_shape.jpg | neuroswarm-results public page, embedded figure |
 | felt_a.jpg | FELT simulator output, experiments/pattern_letter_A.png |
 | caravan.jpg | Screenshot of the public demo, caravan-demo-d8d.pages.dev, 2026-11-02 |
 | gold.jpg | Screenshot of goldentime-console, index.html, 2026-11-02 (synthetic data) |

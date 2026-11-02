@@ -40,7 +40,7 @@ P = [
         ("hg_week.jpg",1300,712,"Temperature and battery state over the failure week at Ho","Worst week of the 8,784-hour run at Ho, Ghana. Figure from harvestguard-models.")]),
  dict(id="neuroswarm", short='Steering a simulated swarm through a channel far too narrow to describe the task.', stats=[('0.862', 'decode'), ('30/30', 'simulated loop')], sec="hardware", title="NeuroSwarm", tag=("Simulation plus public EMG data. No robots built","t-plan"),
   tagline="A brain interface streams about 9.5 bits per second. Direct control of 100 robots needs about 192,000. How much of a swarm can one person steer?",
-  figs=[("ns_hand.jpg",1500,456,"Render of a hand assembled from small truncated-octahedron robots, seen from four angles","Simulated assembly: one hand from 1,712 modules, four views. Design render from my public results page."),
+  figs=[("ns_goal_hand.jpg",1070,1400,"Blender render of a life-size open hand built from thousands of millimeter-scale modules","The goal: a life-size hand built from thousands of small modules. Blender render of the design target, not built."),
         ("ns_shape.jpg",1100,551,"Hexagon assembly under shared autonomy and under a shuffled-command control","Shared autonomy against shuffled commands, simulated. From the same page.")]),
  dict(id="felt", short='Tactile graphics for blind students at a lower price.', stats=[('1,024', 'pins'), ('17.70 ms', 'modelled refresh'), ('133', 'tests')], sec="hardware", title="FELT", tag=("Software built and tested. Hardware pilot planned","t-plan"),
   tagline="A low-cost refreshable tactile graphics display for blind students. Commercial displays cost $5,000 to $12,000.",
