@@ -8,8 +8,6 @@ ABOUT_STEPS = [
      "Across 7 frontier language models, the ones that answered best were the worst at noticing a trap. Since then I have carried the same habit into everything else: register the pass mark, run the test, report the number that came back."),
     ("I run Arbiter, my registered company in Korea.",
      "It builds software that signs and records automated decisions."),
-    ("I chair the Seongnam Youth Council.",
-     "There I turn the same questions into draft ordinances."),
     ("This notebook says what is built, what is only simulated and what is still a plan.",
      "Much of the company code sits in private repositories, and I can show it to reviewers on request."),
 ]
@@ -26,7 +24,7 @@ PAPERS = [
 ]
 
 LEADERSHIP = [
-    ("Chair, Seongnam Youth Council", "Since January 2025. Elected as a member by youth vote, then elected chair by the members."),
+    ("Chair, Seongnam Youth Council", "Since January 2025. Elected as a member by youth vote, then elected chair by the members. There I turn the same questions into draft ordinances."),
     ("Founder, Arbiter (아비터)", "Registered business in Korea."),
     ("Founder, Youths Unite", "International news reports and SDG education decks, published every two weeks."),
     ("Global Youth Goodwill Ambassador, Ethiopian Embassy programme", "16th cohort, February 2026 to January 2027. My SYNAPTIC writing on Ethiopia belongs to this term."),
