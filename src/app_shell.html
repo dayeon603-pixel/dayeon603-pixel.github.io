@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dayeon Kang</title>
+<meta name="description" content="Dayeon Kang: research and engineering portfolio. Machine metacognition, simulation of physical systems, civic software.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap">
+<style>
+:root{
+  --ink:#2A2540; --ink2:#4A4563; --link:#4B2FA6; --paper:#FFFDF8; --card:#FFFFFF; --line:#E9E3F5;
+  --lilac:#EDE6FF; --mint:#DDF6EA; --butter:#FFF4CC; --sky:#DDF0FF; --pink:#FFE5EF; --peach:#FFE8DB;
+  --fd:"Fraunces",Georgia,serif; --fb:"Source Sans 3",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 21px/1.58 var(--fb);-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-underline-offset:3px;text-decoration-thickness:2px}
+a:hover{text-decoration-thickness:3px}
+a:focus-visible{outline:3px solid var(--link);outline-offset:2px;border-radius:4px}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+
+nav.top{position:sticky;top:0;z-index:9;background:rgba(255,253,248,.95);border-bottom:2px solid var(--line)}
+nav.top .wrap{display:flex;gap:10px;align-items:center;padding-block:12px;overflow-x:auto;scrollbar-width:none}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top b{font:700 22px var(--fd);margin-right:auto;padding-right:18px;white-space:nowrap}
+nav.top a{white-space:nowrap;color:var(--ink);text-decoration:none;font-weight:700;font-size:18px;padding:7px 15px;border-radius:999px}
+nav.top a:hover{text-decoration:underline}
+
+.hero{background-color:var(--paper);
+  background-image:linear-gradient(#F1ECFB 1.5px,transparent 1.5px),linear-gradient(90deg,#F1ECFB 1.5px,transparent 1.5px);
+  background-size:30px 30px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:56px;align-items:center;padding-block:72px}
+h1{font:700 clamp(3.2rem,7vw,5.6rem)/1.02 var(--fd);margin:0 0 22px;letter-spacing:-.01em}
+.lede{font-size:1.32em;line-height:1.45;margin:0 0 22px}
+.hero p{margin:0 0 16px}
+.hero .side{background:var(--pink);padding:18px;border-radius:30px}
+.hero .side img{border-radius:20px;background:#fff}
+.hero .side p{font-size:.85em;color:var(--ink2);margin:12px 4px 0}
+.links{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:22px;font-weight:700}
+
+section.band{padding:76px 0}
+.band>.wrap>h2{font:700 clamp(2.4rem,4.6vw,3.6rem)/1.08 var(--fd);margin:0 0 12px}
+.band>.wrap>.intro{font-size:1.14em;max-width:44em;margin:0 0 40px}
+.research{background:var(--lilac)}.hardware{background:var(--mint)}.products{background:var(--butter)}
+.civic{background:var(--sky)}.papers{background:var(--pink)}.record{background:var(--peach)}
+
+article.project{background:var(--card);border-radius:28px;padding:40px;margin:0 0 30px;
+  box-shadow:0 2px 0 rgba(42,37,64,.05),0 14px 30px -24px rgba(42,37,64,.35)}
+article.project h3{font:700 clamp(1.9rem,3vw,2.5rem)/1.12 var(--fd);margin:0 0 10px}
+.tag{display:inline-block;font-weight:700;font-size:.8em;line-height:1.3;padding:5px 14px;border-radius:999px;margin:0 0 14px}
+.t-built{background:var(--mint)}.t-review{background:var(--lilac)}.t-plan{background:var(--butter)}.t-prop{background:var(--sky)}
+.tagline{font-size:1.14em;margin:0 0 24px}
+.body{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:40px;align-items:start}
+.body.solo{grid-template-columns:minmax(0,1fr);max-width:50em}
+dl{margin:0}
+dt{font-weight:700;margin:0 0 2px;font-size:.84em;letter-spacing:.03em;text-transform:uppercase;color:var(--ink2)}
+dd{margin:0 0 20px}
+dd:last-child{margin-bottom:0}
+figure{margin:0 0 24px}
+figure:last-child{margin-bottom:0}
+figure img,figure svg{border-radius:14px;border:2px solid var(--line);width:100%;height:auto;background:#fff}
+figure.phone img{max-width:320px;margin-inline:auto}
+figcaption{font-size:.8em;line-height:1.45;color:var(--ink2);margin-top:9px}
+.wide{margin-top:30px}
+.plinks{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:22px;font-weight:700}
+
+.oneline{background:var(--card);border-radius:22px;padding:26px 32px;margin:0 0 30px}
+.oneline h3{font:700 1.45rem var(--fd);margin:0 0 12px}
+.oneline ul{margin:0;padding-left:1.1em}.oneline li{margin:0 0 8px}
+
+.list{list-style:none;margin:0;padding:0;background:var(--card);border-radius:28px;overflow:hidden}
+.list li{padding:22px 34px;border-bottom:2px solid var(--line)}
+.list li:last-child{border-bottom:0}
+.list b{display:block;line-height:1.35}
+.list span{color:var(--ink2);font-size:.92em}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;align-items:start}
+.cols h3{font:700 1.7rem var(--fd);margin:0 0 16px}
+
+footer{padding:56px 0;background:var(--lilac)}
+footer h2{font:700 2.4rem var(--fd);margin:0 0 10px}
+footer p{margin:0 0 8px}
+
+@media (max-width:900px){
+  body{font-size:20px}
+  .wrap{padding:0 20px}
+  .hero .wrap{grid-template-columns:1fr;gap:30px;padding-block:44px}
+  .hero .side{max-width:360px}
+  .body{grid-template-columns:minmax(0,1fr);gap:26px}
+  article.project{padding:26px 22px;border-radius:22px}
+  section.band{padding:52px 0}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .list li{padding:18px 22px}
+  nav.top a{font-size:17px;padding:6px 10px}
+}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Sections"><div class="wrap">
+<b>Dayeon Kang</b>
+<a href="#research" style="background:var(--lilac)">Research</a>
+<a href="#hardware" style="background:var(--mint)">Hardware</a>
+<a href="#products" style="background:var(--butter)">Products</a>
+<a href="#civic" style="background:var(--sky)">Civic</a>
+<a href="#papers" style="background:var(--pink)">Papers</a>
+<a href="#record" style="background:var(--peach)">Record</a>
+</div></nav>
+{{HERO}}
+<main>
+{{SECTIONS}}
+{{PAPERS}}
+{{RECORD}}
+</main>
+{{FOOTER}}
+</body>
+</html>
