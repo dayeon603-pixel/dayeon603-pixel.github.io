@@ -11,9 +11,8 @@ import meta
 
 SRC = Path(__file__).resolve().parent
 OUT = SRC.parent / "index.html"
-INK, INK2, ACCENT, NEUTRAL = "#2A2540", "#4A4563", "#6B4FBB", "#A29DB8"
-WIDE_ASPECT = 1.7  # figures wider than this run full card width so their labels stay readable
-FONT = "font-family:'Source Sans 3',system-ui,sans-serif"
+INK, INK2, ACCENT, NEUTRAL = "#2C2350", "#463E66", "#6B4FBB", "#A29DB8"
+FONT = "font-family:Quicksand,system-ui,sans-serif"
 
 
 def bars(title: str, rows: list[tuple[str, float, str, bool]], desc: str) -> str:
@@ -31,7 +30,7 @@ def bars(title: str, rows: list[tuple[str, float, str, bool]], desc: str) -> str
         parts.append(f'<rect x="{left}" y="{y + 6}" width="{bw:.1f}" height="28" rx="4" fill="{fill}"><title>{html.escape(label)}: {shown}</title></rect>')
         parts.append(f'<text x="{left + bw + 8:.1f}" y="{y + 26}" font-size="20" font-weight="700" fill="{INK}">{shown}</text>')
     parts.append("</svg>")
-    return f"<figure>{''.join(parts)}<figcaption>{desc}</figcaption></figure>"
+    return f'<figure class="fg">{''.join(parts)}<figcaption>{desc}</figcaption></figure>'
 
 
 def scatter() -> str:
@@ -58,7 +57,7 @@ def scatter() -> str:
         s.append(f'<circle cx="{x(a):.1f}" cy="{y(d):.1f}" r="9" fill="{ACCENT if not hi else "#E0567F"}" stroke="#fff" stroke-width="2"><title>{name}: accuracy {a}%, trap detection {d}%</title></circle>')
         s.append(f'<text x="{x(a) + dx:.1f}" y="{y(d) + dy:.1f}" text-anchor="{anchor}" font-size="17" fill="{INK}">{name}</text>')
     s.append("</svg>")
-    return f"<figure>{''.join(s)}<figcaption>Each point is one model. Plotted from the results table in the MetaMirage repository. The pink point is the exception.</figcaption></figure>"
+    return f'<figure class="fg">{''.join(s)}<figcaption>Each point is one model. Plotted from the results table in the MetaMirage repository. The pink point is the exception.</figcaption></figure>'
 
 
 CHARTS = {
@@ -75,32 +74,56 @@ CHARTS = {
 
 def panels() -> dict[str, str]:
     text = (SRC / "panels.html").read_text(encoding="utf-8")
-    parts = re.split(r"<!-- panel:([a-z]+) -->", text)
+    parts = re.split(r"<!-- panel:([a-z-]+) -->", text)
     return {parts[i]: parts[i + 1].strip() for i in range(1, len(parts), 2)}
 
 
+ICONS = [
+    '<path d="M30 4l6 17 18 1-14 11 5 18-15-10-15 10 5-18L6 22l18-1z" fill="{c}"/>',
+    '<path d="M30 5v50M5 30h50M12 12l36 36M48 12L12 48" stroke="{c}" stroke-width="6" stroke-linecap="round" fill="none"/>',
+    '<path d="M30 10c6-7 18-3 17 6 7-2 12 7 6 12 6 5 1 14-6 12 1 9-11 13-17 6-6 7-18 3-17-6-7 2-12-7-6-12-6-5-1-14 6-12-1-9 11-13 17-6z" fill="{c}"/>',
+    '<path d="M30 7c5 0 7 6 6 10 4-2 10-1 11 4s-4 8-8 8c3 3 4 9 0 12s-9-1-11-5c-1 4-6 8-10 5s-3-9 0-12c-4 0-9-3-8-8s7-6 11-4c-1-4 1-10 6-10z" fill="{c}"/><circle cx="30" cy="30" r="6" fill="#fff"/>',
+]
+GUTTER = '<div class="gutter" aria-hidden="true">' + "<i></i>" * 11 + "</div>"
+COL = {t[0]: t[2] for t in meta.TABS}
+ORDER = ["metamirage", "temperature", "aegis", "ascent", "sps", "korean-pim", "arc", "nemotron"]  # as on main
+
+
+def icon(i: int, color: str, size: int, style: str = "") -> str:
+    return f'<svg class="dd" viewBox="0 0 60 60" width="{size}" height="{size}" style="{style}" aria-hidden="true">{ICONS[i % len(ICONS)].format(c=color)}</svg>'
+
+
+def screen(key: str, inner: str, extra: str = "") -> str:
+    return f'<div class="screen{extra}" id="sc-{key}" data-screen="{key}">{inner}</div>'
+
+
+def steps(rows: list[str]) -> str:
+    return "".join(f'<div class="step"><span class="n">{i}</span><div>{r}</div></div>' for i, r in enumerate(rows, 1))
+
+
 def project(p: dict, body: str) -> str:
-    side, wide = [], []
+    """Spread as on main: left page has crumb, title, chips and links; right page scrolls. Lead figure sits on top."""
+    figs = []
     for f in p.get("figs", []):
-        cls = ' class="phone"' if len(f) > 5 else ""
-        tag = f'<figure{cls}><img src="img/{f[0]}" width="{f[1]}" height="{f[2]}" loading="lazy" alt="{html.escape(f[3])}"><figcaption>{f[4]}</figcaption></figure>'
-        (wide if f[1] / f[2] > WIDE_ASPECT else side).append(tag)
+        cls = "fg phone" if len(f) > 5 else "fg"
+        figs.append(f'<figure class="{cls}"><img src="img/{f[0]}" width="{f[1]}" height="{f[2]}" loading="lazy" alt="{html.escape(f[3])}"><figcaption>{f[4]}</figcaption></figure>')
     if p.get("chart"):
-        side.insert(0, CHARTS[p["chart"]]())
-    links = "".join(f'<a href="{u}">{t}</a>' for t, u in p.get("links", []))
-    links = f'<div class="plinks">{links}</div>' if links else ""
-    col = f"<div>{''.join(side)}</div>" if side else ""
-    cls = "body" if side else "body solo"
-    below = f'<div class="wide">{"".join(wide)}</div>' if wide else ""
-    return (f'<article class="project" id="{p["id"]}"><span class="tag {p["tag"][1]}">{p["tag"][0]}</span>'
-            f'<h3>{p["title"]}</h3><p class="tagline">{p["tagline"]}</p>'
-            f'<div class="{cls}"><div><dl>{body}</dl>{links}</div>{col}</div>{below}</article>')
+        figs.insert(0, CHARTS[p["chart"]]())
+    lead, rest = "".join(figs[:1]), "".join(figs[1:])
+    stats = "".join(f"<div class=\"stat\"><b>{a}</b><span>{b}</span></div>" for a, b in p.get("stats", []))
+    links = "".join(f'<a href="{u}" target="_blank" rel="noopener">{t} &rarr;</a>' for t, u in p.get("links", []))
+    sec = p["sec"]
+    return screen(f'p/{p["id"]}', f'''<div class="spread">{GUTTER}
+<div class="page left"><p class="crumb" data-go="s/{sec}">&larr; {dict((t[0], t[1]) for t in meta.TABS)[sec]}</p>
+<h2 class="bub lg">{p["title"]}</h2><p class="status"><span class="pill">{p["tag"][0]}</span></p>
+<p class="hand">{p["tagline"]}</p><div class="stats">{stats}</div><div class="links">{links}</div></div>
+<div class="page right scroll">{lead}<dl class="w">{body}</dl>{rest}</div></div>''')
 
 
-EXTRA = {
-    "research": ('Also in progress', ["Landauer: how many joules does one language-model request actually cost? In draft."]),
-    "hardware": ('Also in progress', ["NeuroVoice: reading speech from facial muscles, for people who have lost their voice. Details stay unpublished until it has been judged."]),
-    "civic": ('Also on my GitHub', [
+ALSO = {
+    "research": ("Also in progress", ["Landauer: how many joules does one language-model request actually cost? In draft."]),
+    "hardware": ("Also in progress", ["NeuroVoice: reading speech from facial muscles, for people who have lost their voice. Details stay unpublished until it has been judged."]),
+    "civic": ("Also on my GitHub", [
         '<a href="https://github.com/dayeon603-pixel/cell-model">cell-model</a>: an interactive 3D animal cell with eight organelles, built with three.js.',
         '<a href="https://github.com/dayeon603-pixel/AlphaNexus">AlphaNexus</a>: patent and trademark portfolio risk screening with four independent risk modules.',
         '<a href="https://github.com/dayeon603-pixel/windtrace">WindTrace</a>: locating an odour source from citizen reports and live wind direction, on Incheon public data.',
@@ -108,25 +131,51 @@ EXTRA = {
 }
 
 
+def section(sid: str, label: str, bodies: dict[str, str]) -> str:
+    items = sorted((p for p in meta.P if p["sec"] == sid), key=lambda p: ORDER.index(p["id"]) if p["id"] in ORDER else len(ORDER))
+    tiles = "".join(
+        f'<button class="tile sm" data-go="p/{p["id"]}" style="--c:{COL[sid]}">{icon(i, COL[sid], 40)}'
+        f'<span class="tile-l">{p["title"]}</span><span class="tile-s">{p["short"]}</span></button>'
+        for i, p in enumerate(items))
+    also = ""
+    if sid in ALSO:
+        title, lines = ALSO[sid]
+        also = f'<div class="also"><b>{title}</b><ul>{"".join(f"<li>{l}</li>" for l in lines)}</ul></div>'
+    tab = screen(f"s/{sid}", f'<div class="page single"><h2 class="bub mid">{label}</h2>'
+                 f'<p class="mid-sub">{len(items)} projects &middot; tap one to open</p><div class="tiles grid3">{tiles}</div>{also}</div>')
+    return tab + "".join(project(p, bodies[p["id"]]) for p in items)
+
+
+def spread(key: str, title: str, left: str, right: str) -> str:
+    return screen(key, f'<div class="spread">{GUTTER}<div class="page left"><h2 class="bub lg">{title}</h2>{left}</div><div class="page right scroll">{right}</div></div>')
+
+
 def main() -> None:
     bodies = panels()
-    secs = []
-    for sid, name, intro in meta.SECTIONS:
-        items = "".join(project(p, bodies[p["id"]]) for p in meta.P if p["sec"] == sid)
-        extra = ""
-        if sid in EXTRA:
-            title, lines = EXTRA[sid]
-            extra = f'<div class="oneline"><h3>{title}</h3><ul>{"".join(f"<li>{l}</li>" for l in lines)}</ul></div>'
-        secs.append(f'<section class="band {sid}" id="{sid}"><div class="wrap"><h2>{name}</h2><p class="intro">{intro}</p>{items}{extra}</div></section>')
-    li = lambda rows: "".join(f"<li><b>{a}</b><span>{b}</span></li>" for a, b in rows)
-    papers = (f'<section class="band papers" id="papers"><div class="wrap"><h2>Papers</h2>'
-              f'<p class="intro">Status as of November 2026. Nothing here is described as published.</p><ul class="list">{li(cv.PAPERS)}</ul></div></section>')
-    record = (f'<section class="band record" id="record"><div class="wrap"><h2>Record</h2><div class="cols">'
-              f'<div><h3>Roles</h3><ul class="list">{li(cv.LEADERSHIP)}</ul></div>'
-              f'<div><h3>Honors</h3><ul class="list">{li(cv.HONORS)}</ul></div></div></div></section>')
+    tabs = "".join(f'<button class="tab" data-go="s/{i}" data-sec="{i}" style="--c:{c};--tp:{p}"><span>{l}</span></button>' for i, l, c, p in meta.TABS)
+    cover = screen("cover", '<div class="page single"><div class="cover-in"><div class="shot"><img src="img/me.jpg" alt="Dayeon Kang"></div>'
+                   '<h1 class="bub">Dayeon<br>Kang</h1><p class="cover-sub">Research &amp; engineering portfolio</p>'
+                   '<p class="cover-sub2">Machine metacognition &middot; assistive hardware &middot; civic systems</p>'
+                   '<button class="big-btn" data-go="menu">Open the notebook &rarr;</button></div></div>')
+    menu_tiles = "".join(f'<button class="tile" data-go="s/{i}" style="--c:{c}">{icon(n, c, 54)}<span class="tile-l">{l}</span></button>' for n, (i, l, c, _) in enumerate(meta.TABS))
+    menu = screen("menu", f'<div class="page single"><h2 class="bub mid">Portfolio</h2><p class="mid-sub">Pick a tab, or tap a card below</p><div class="tiles">{menu_tiles}</div></div>')
+    about_right = steps([f"<b>{a}</b> {b}" for a, b in cv.ABOUT_STEPS] + [f"<b>{a}.</b> {b}" for a, b in cv.LEADERSHIP])
+    about = spread("s/about", "About<br>Me",
+                   '<div class="shot sm"><img src="img/me.jpg" width="900" height="1236" alt="Portrait of Dayeon Kang"></div><p class="hand">Seongnam, Korea</p>'
+                   '<div class="links"><a href="https://github.com/dayeon603-pixel">GitHub &rarr;</a><a href="https://arbiter.company">arbiter.company &rarr;</a></div>',
+                   about_right)
+    papers = spread("s/papers", "Papers", icon(0, COL["papers"], 60, "margin-top:10px") + '<p class="hand">Status as of November 2026</p><p class="tiny">Nothing here is described as published.</p>',
+                    steps([f'<b>{a}</b><p class="tiny">{b}</p>' for a, b in cv.PAPERS]))
+    awards = spread("s/awards", "Awards", icon(3, COL["awards"], 60, "margin-top:10px") + f'<p class="hand">{len(cv.HONORS)} honors</p>',
+                    steps([f'<b>{a}</b><p class="tiny">{b}</p>' for a, b in cv.HONORS]))
+    contact = screen("s/contact", '<div class="page single"><h2 class="bub mid">Say hello</h2><div class="links big">'
+                     '<a href="mailto:dayeon603@gmail.com">dayeon603@gmail.com</a><a href="mailto:dayeon@arbiter.company">dayeon@arbiter.company</a>'
+                     '<a href="https://github.com/dayeon603-pixel">github.com/dayeon603-pixel</a><a href="https://orcid.org/0009-0006-4481-0277">ORCID 0009-0006-4481-0277</a></div>'
+                     '<p class="mid-sub" style="margin-top:26px">Scripts and run records for anything here are available on request.</p></div>')
+    labels = {t[0]: t[1] for t in meta.TABS}
+    secs = "\n".join(section(s, labels[s], bodies) for s in ("research", "hardware", "ventures", "civic"))
     page = (SRC / "app_shell.html").read_text(encoding="utf-8")
-    for key, val in {"HERO": cv.HERO, "SECTIONS": "\n".join(secs), "PAPERS": papers, "RECORD": record, "FOOTER": cv.FOOTER}.items():
-        page = page.replace("{{" + key + "}}", val)
+    page = page.replace("{{TABS}}", tabs).replace("{{SCREENS}}", "\n".join([cover, menu, about, papers, awards, contact, secs]))
     OUT.write_text(page, encoding="utf-8")
 
 
