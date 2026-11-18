@@ -5,11 +5,11 @@ ABOUT_STEPS = [
     ("I build AI systems and physical models, then test them until they break.",
      "One question runs through the work: does a system know when it is about to be wrong?"),
     ("My first result on that question came from MetaMirage.",
-     "Across 7 frontier language models, the ones that answered best were the worst at noticing a trap. Since then I have carried the same habit into everything else: register the pass mark, run the test, report the number that came back."),
-    ("I run Arbiter, my registered company in Korea.",
+     "Across 7 frontier language models, the ones that answered best were the worst at noticing a trap. The same method carries into everything since: register the pass mark, run the test, report the number that came back."),
+    ("I run Arbiter, a registered company in Korea.",
      "It builds software that signs and records automated decisions."),
-    ("This notebook says what is built, what is only simulated and what is still a plan.",
-     "Much of the company code sits in private repositories, and I can show it to reviewers on request."),
+    ("This portfolio states what is built, what is only simulated and what is still a plan.",
+     "Much of the company code sits in private repositories and can be shown to reviewers on request."),
 ]
 
 PAPERS = [
