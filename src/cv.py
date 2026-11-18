@@ -54,6 +54,8 @@ HONORS = [
   ("Grand Prize, Top-Class Representative Figure",
    "ICAE 2030 Together international conference on the global environment, 2024."),
   ("Speaker of the Seoul Metropolitan Council Award, 4th Plastic-Free Competition", "HOBY Korea, December 2024."),
+  ("Speaker of the Gyeonggi Provincial Council Award, 5th Plastic-Free Competition",
+   "HOBY Korea, 1 December 2025."),
   ("Award of Excellence, 5th Plastic-Free Hybrid Competition",
    "Gyeonggi-do Guri-Namyangju Office of Education with the Green Environment Action Headquarters, 27 December 2025, with team Re Gen."),
   ("The Duke of Edinburgh's International Award, Silver and Bronze",
