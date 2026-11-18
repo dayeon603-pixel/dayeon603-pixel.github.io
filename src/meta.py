@@ -55,7 +55,7 @@ P = [
   tagline="Customs classification with a citation behind every code, for importers who have to defend the decision.",
   links=[("Live demo","https://caravan-demo-d8d.pages.dev")],
   figs=[("caravan.jpg",1200,590,"Caravan demo: a form for a pre-purchase import decision","Public demo, captured for this page. Reference tool, and it is not legal advice.")]),
- dict(id="halo", short='Catch the scam, then guide the recovery.', stats=[('0.880', 'macro F1, n = 25'), ('485', 'tests')], sec="ventures", title="HALO and Goldentime", tag=("HALO pre-alpha, code public. Goldentime demo public","t-built"),
+ dict(id="halo", short='Catch the scam, then guide the recovery.', stats=[('0.880', 'macro F1, n = 25'), ('525', 'tests')], sec="ventures", title="HALO and Goldentime", tag=("HALO pre-alpha, code public. Goldentime demo public","t-built"),
   tagline="Two sides of voice phishing in Korea: catch the scam on the phone, then guide recovery in the first 30 minutes after it lands.",
   links=[("HALO repository","https://github.com/dayeon603-pixel/HALO"),("Goldentime console","https://goldentime-console.dayeon603.workers.dev")],
   figs=[("gold.jpg",1300,812,"Goldentime bank console dashboard with incident table","Goldentime bank console. Public demo, all data synthetic."),
