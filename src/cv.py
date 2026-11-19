@@ -47,6 +47,8 @@ HONORS = [
   ("8th Korea Code Fair Hackathon", "Reached the finals with team 영점, October 2026."),
  ]),
  ("International and civic", [
+  ("Commendation of the Mayor of Seongnam",
+   "City of Seongnam, certificate 1509, 14 November 2026, signed by Mayor Shin Sang-jin. The citation is for service as a member of the Seongnam Youth Council."),
   ("Ambassador's Award, Embassy of the Philippines",
    "31st Diplomatic International Forum of Seoul, 31 January 2026, signed by Ambassador Bernadette Therese C. Fernandez."),
   ("UN SDGs Global Leader, KIECC UN SDG international speech contest",
@@ -66,6 +68,8 @@ HONORS = [
  ("Creative and athletic", [
   ("Ranatra Fusca Creativity Award, Odyssey of the Mind Korean national team selection",
    "5 March 2021, with team SALT International School. The award carried a place on the Korean national team for the World Finals."),
+  ("Encouragement Award from the Chairman of the Miral Welfare Foundation, 12th Storytelling Competition",
+   "Children and youth division, on improving public understanding of disability. Certificate 2026-519, 23 October 2026."),
   ("KASS Championships 2026, three placings",
    "Second in 100 m butterfly, third in 200 m individual medley, third in 100 m breaststroke. Seoul, 22 to 23 May 2026."),
   ("Athletic Pioneer Award in swimming", "MICA International Scholars, 2025 to 2026 academic year."),
